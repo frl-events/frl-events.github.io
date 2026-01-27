@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="MAUL — one-page rave flyer site with lineup + tickets." />
+  <meta name="description" content="MAUL — ATL's Primier Furry Nightclub Event" />
   <meta name="theme-color" content="#0b0b10" />
   <title>MAUL</title>
 
@@ -25,7 +25,7 @@
       --stroke: rgba(255,255,255,.12);
       --shadow: 0 20px 60px rgba(0,0,0,.55);
       --radius: 20px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
       --sans: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
@@ -331,11 +331,11 @@
         <div>
           <h1 class="title flicker" id="eventName">MAUL</h1>
           <p class="sub" id="eventTagline">
-            North Atlanta • location TBA • heavy beats • good behavior.
+            North Atlanta • location TBA • USBEAN / BOUNCECRAFT / PUKI / GLITTERMUTT / M4NUAL
           </p>
         </div>
 
-        <div class="badge" id="countdown">DATE TBA</div>
+        <div class="badge" id="countdown">LOADING…</div>
       </header>
 
       <section class="lineup" aria-label="Lineup">
@@ -344,8 +344,8 @@
 
       <section class="meta" aria-label="Event info">
         <div class="left">
-          <span class="pill" id="eventDateText">DATE TBA</span>
-          <span class="pill" id="doorsText">DOORS TBA</span>
+          <span class="pill" id="eventDateText">THU • FEB 26, 2026</span>
+          <span class="pill" id="doorsText">DOORS 8:30PM</span>
           <span class="pill" id="cityText">NORTH ATLANTA</span>
         </div>
 
@@ -357,13 +357,13 @@
           BUY TICKETS
         </a>
 
-        <button class="ghost" id="copyBtn" type="button" title="Copy address/notes">
+        <button class="ghost" id="copyBtn" type="button" title="Copy info">
           COPY INFO
         </button>
       </div>
 
       <p class="about" id="aboutText">
-        Location drops to ticket holders / RSVPs. Respect the space, respect each other, hydrate, and keep it fun.
+        Doors at 8:30. Music starts at 9. Location drops closer to showtime to ticket holders / RSVPs.
       </p>
 
       <footer>
@@ -381,34 +381,36 @@
       eventName: "MAUL",
       tagline: "North Atlanta • location TBA • USBEAN / BOUNCECRAFT / PUKI / GLITTERMUTT / M4NUAL",
 
-      // Leave blank to show DATE TBA (no countdown)
-      eventDateISO: "", // e.g. "2026-02-28T21:00:00"
+      // Countdown uses the viewer's local timezone.
+      // Feb 26, 2026 — doors 8:30pm, music 9:00pm
+      eventDateISO: "2026-02-26T21:00:00",
 
-      eventDateLabel: "DATE TBA",
-      doorsLabel: "DOORS TBA",
+      eventDateLabel: "THU • FEB 26, 2026",
+      doorsLabel: "DOORS 8:30PM",
       cityLabel: "NORTH ATLANTA",
       venueLabel: "LOCATION: TBD",
 
       // Put your real ticket link here
       ticketUrl: "#",
 
-      // What the COPY button copies
+      // Copy button text
       copyText: [
         "MAUL",
-        "North Atlanta",
-        "Location: TBD (shared closer to event)",
-        "Lineup: USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL",
+        "Thu, Feb 26, 2026",
+        "Doors 8:30PM • Music 9:00PM",
+        "North Atlanta • Location TBD",
+        "Lineup (1hr sets): USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL",
         "Tickets: (add link)",
         "Contact: @yourhandle"
       ].join("\n"),
 
-      // If you don’t have set times yet, keep time as "TBA"
+      // 1 hour each, starting at 9:00 PM
       lineup: [
-        { time: "TBA", genre: "SET", act: "USBEAN",      tag: "OPEN" },
-        { time: "TBA", genre: "SET", act: "BOUNCECRAFT" },
-        { time: "TBA", genre: "SET", act: "PUKI" },
-        { time: "TBA", genre: "SET", act: "GLITTERMUTT" },
-        { time: "TBA", genre: "SET", act: "M4NUAL",     tag: "CLOSE" }
+        { time: "9:00PM",  genre: "SET 1", act: "USBEAN",      tag: "OPEN"  },
+        { time: "10:00PM", genre: "SET 2", act: "BOUNCECRAFT"               },
+        { time: "11:00PM", genre: "SET 3", act: "PUKI"                      },
+        { time: "12:00AM", genre: "SET 4", act: "GLITTERMUTT"               },
+        { time: "1:00AM",  genre: "SET 5", act: "M4NUAL",      tag: "CLOSE" }
       ]
     };
 
@@ -460,40 +462,37 @@
       }
     });
 
-    // Countdown: only if eventDateISO is set
+    // Countdown
     const countdownEl = $("countdown");
-    function startCountdown(){
-      const eventDate = new Date(CONFIG.eventDateISO);
+    const eventDate = new Date(CONFIG.eventDateISO);
+
+    function tick(){
       if (!CONFIG.eventDateISO || Number.isNaN(eventDate.getTime())) {
-        countdownEl.textContent = "DATE TBA";
+        countdownEl.textContent = "SET DATE";
+        return;
+      }
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0){
+        countdownEl.textContent = "HAPPENING NOW";
         return;
       }
 
-      function tick(){
-        const now = new Date();
-        const diff = eventDate - now;
+      const s = Math.floor(diff / 1000);
+      const d = Math.floor(s / 86400);
+      const h = Math.floor((s % 86400) / 3600);
+      const m = Math.floor((s % 3600) / 60);
 
-        if (diff <= 0){
-          countdownEl.textContent = "HAPPENING NOW";
-          return;
-        }
-        const s = Math.floor(diff / 1000);
-        const d = Math.floor(s / 86400);
-        const h = Math.floor((s % 86400) / 3600);
-        const m = Math.floor((s % 3600) / 60);
-
-        const parts = [];
-        if (d) parts.push(`${d}d`);
-        parts.push(`${String(h).padStart(2,"0")}h`);
-        parts.push(`${String(m).padStart(2,"0")}m`);
-        countdownEl.textContent = `STARTS IN ${parts.join(" ")}`;
-      }
-
-      tick();
-      setInterval(tick, 1000);
+      const parts = [];
+      if (d) parts.push(`${d}d`);
+      parts.push(`${String(h).padStart(2,"0")}h`);
+      parts.push(`${String(m).padStart(2,"0")}m`);
+      countdownEl.textContent = `STARTS IN ${parts.join(" ")}`;
     }
-    startCountdown();
+
+    tick();
+    setInterval(tick, 1000);
   </script>
 </body>
 </html>
-
