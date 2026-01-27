@@ -1,1 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="MAUL — one-page rave flyer site with lineup + tickets." />
+  <meta name="theme-color" content="#0b0b10" />
+  <title>MAUL</title>
+
+  <!-- Optional font (delete for 100% self-contained) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #07070c;
+      --fg: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --dim: rgba(255,255,255,.40);
+      --accentA: #78f6ff;
+      --accentB: #ff4fd8;
+      --accentC: #a8ff67;
+      --card: rgba(255,255,255,.04);
+      --stroke: rgba(255,255,255,.12);
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+      --radius: 20px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      overflow-x:hidden;
+    }
+
+    .bg{
+      position:fixed; inset:-40vmax;
+      z-index:-3;
+      background:
+        radial-gradient(35vmax 30vmax at 20% 20%, rgba(120,246,255,.18), transparent 60%),
+        radial-gradient(40vmax 35vmax at 75% 25%, rgba(255,79,216,.16), transparent 60%),
+        radial-gradient(50vmax 40vmax at 45% 75%, rgba(168,255,103,.10), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%, rgba(255,255,255,.01));
+      filter: blur(20px) saturate(130%);
+      animation: drift 16s ease-in-out infinite alternate;
+      transform: translate3d(0,0,0);
+    }
+    @keyframes drift{
+      from{ transform: translate(-2.5%, -1.5%) scale(1.02); }
+      to  { transform: translate( 2.5%,  1.5%) scale(1.04); }
+    }
+
+    .fx::before,
+    .fx::after{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:-2;
+    }
+    .fx::before{
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,.030) 0px,
+          rgba(255,255,255,.030) 1px,
+          transparent 2px,
+          transparent 6px
+        );
+      mix-blend-mode: overlay;
+      opacity:.35;
+    }
+    .fx::after{
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.06), transparent 35%),
+        radial-gradient(circle at 80% 60%, rgba(255,255,255,.05), transparent 40%),
+        radial-gradient(circle at 50% 85%, rgba(255,255,255,.04), transparent 45%);
+      opacity:.25;
+      filter: blur(10px);
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 56px 20px;
+    }
+
+    .panel{
+      width:min(760px, 100%);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px 26px 22px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .panel::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: linear-gradient(135deg, rgba(120,246,255,.18), rgba(255,79,216,.12), rgba(168,255,103,.10));
+      filter: blur(18px);
+      opacity:.35;
+      z-index:-1;
+    }
+
+    header{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+
+    .title{
+      line-height:1.0;
+      letter-spacing: .08em;
+      font-weight: 700;
+      font-size: clamp(44px, 8vw, 84px);
+      margin:0;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 18px rgba(120,246,255,.18),
+        0 0 22px rgba(255,79,216,.14);
+    }
+
+    .badge{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--stroke);
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.20);
+      backdrop-filter: blur(6px);
+      white-space:nowrap;
+    }
+
+    .sub{
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 62ch;
+    }
+
+    .lineup{
+      margin-top: 22px;
+      border-top: 1px solid var(--stroke);
+      padding-top: 18px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(255,255,255,.10);
+    }
+
+    .time{
+      font-family: var(--mono);
+      font-size: 18px;
+      color: rgba(255,255,255,.85);
+      letter-spacing:.04em;
+    }
+
+    .slot{
+      display:flex;
+      flex-direction:column;
+      gap: 2px;
+    }
+
+    .genre{
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing:.12em;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    .act{
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing:.02em;
+      color: var(--fg);
+      display:flex;
+      gap:10px;
+      align-items:baseline;
+      flex-wrap:wrap;
+    }
+
+    .tag{
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(0,0,0,.85);
+      background: linear-gradient(90deg, var(--accentA), var(--accentB));
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top: 18px;
+      padding: 14px 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      background: rgba(0,0,0,.20);
+    }
+    .meta .left{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 14px;
+      align-items:center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .cta{
+      margin-top: 18px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    a.button{
+      appearance:none;
+      border: 1px solid rgba(255,255,255,.18);
+      background: linear-gradient(135deg, rgba(120,246,255,.18), rgba(255,79,216,.18));
+      color: rgba(255,255,255,.92);
+      text-decoration:none;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      letter-spacing:.04em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      transition: transform .12s ease, filter .12s ease;
+    }
+    a.button:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+    a.button:active{ transform: translateY(0px); filter: brightness(0.98); }
+
+    button.ghost{
+      font-family: var(--mono);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.80);
+      padding: 12px 14px;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease;
+    }
+    button.ghost:hover{ transform: translateY(-1px); background: rgba(255,255,255,.05); }
+    button.ghost:active{ transform: translateY(0px); }
+
+    .about{
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    footer{
+      margin-top: 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px 16px;
+      justify-content:space-between;
+      color: rgba(255,255,255,.45);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .flicker{ animation: flicker 6.5s infinite; }
+    @keyframes flicker{
+      0%, 100% { opacity: 1; }
+      1% { opacity: .88; }
+      2% { opacity: 1; }
+      38% { opacity: 1; }
+      39% { opacity: .92; }
+      40% { opacity: 1; }
+      79% { opacity: 1; }
+      80% { opacity: .90; }
+      81% { opacity: 1; }
+    }
+
+    @media (max-width: 520px){
+      .panel{ padding: 26px 18px 18px; }
+      .row{ grid-template-columns: 88px 1fr; }
+      .time{ font-size: 16px; }
+      .act{ font-size: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .bg{ animation:none; }
+      .flicker{ animation:none; }
+      a.button, button.ghost{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="fx" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <main class="panel" role="main">
+      <header>
+        <div>
+          <h1 class="title flicker" id="eventName">MAUL</h1>
+          <p class="sub" id="eventTagline">
+            North Atlanta • location TBA • heavy beats • good behavior.
+          </p>
+        </div>
+
+        <div class="badge" id="countdown">DATE TBA</div>
+      </header>
+
+      <section class="lineup" aria-label="Lineup">
+        <div id="lineupRoot"></div>
+      </section>
+
+      <section class="meta" aria-label="Event info">
+        <div class="left">
+          <span class="pill" id="eventDateText">DATE TBA</span>
+          <span class="pill" id="doorsText">DOORS TBA</span>
+          <span class="pill" id="cityText">NORTH ATLANTA</span>
+        </div>
+
+        <span class="pill" id="venueText">LOCATION: TBD</span>
+      </section>
+
+      <div class="cta">
+        <a class="button" id="ticketBtn" href="#" target="_blank" rel="noopener">
+          BUY TICKETS
+        </a>
+
+        <button class="ghost" id="copyBtn" type="button" title="Copy address/notes">
+          COPY INFO
+        </button>
+      </div>
+
+      <p class="about" id="aboutText">
+        Location drops to ticket holders / RSVPs. Respect the space, respect each other, hydrate, and keep it fun.
+      </p>
+
+      <footer>
+        <span id="footerLeft">© <span id="year"></span> MAUL</span>
+        <span id="footerRight">CONTACT: @yourhandle</span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    /**
+     * EDIT THESE VALUES ↓↓↓
+     */
+    const CONFIG = {
+      eventName: "MAUL",
+      tagline: "North Atlanta • location TBA • USBEAN / BOUNCECRAFT / PUKI / GLITTERMUTT / M4NUAL",
+
+      // Leave blank to show DATE TBA (no countdown)
+      eventDateISO: "", // e.g. "2026-02-28T21:00:00"
+
+      eventDateLabel: "DATE TBA",
+      doorsLabel: "DOORS TBA",
+      cityLabel: "NORTH ATLANTA",
+      venueLabel: "LOCATION: TBD",
+
+      // Put your real ticket link here
+      ticketUrl: "#",
+
+      // What the COPY button copies
+      copyText: [
+        "MAUL",
+        "North Atlanta",
+        "Location: TBD (shared closer to event)",
+        "Lineup: USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL",
+        "Tickets: (add link)",
+        "Contact: @yourhandle"
+      ].join("\n"),
+
+      // If you don’t have set times yet, keep time as "TBA"
+      lineup: [
+        { time: "TBA", genre: "SET", act: "USBEAN",      tag: "OPEN" },
+        { time: "TBA", genre: "SET", act: "BOUNCECRAFT" },
+        { time: "TBA", genre: "SET", act: "PUKI" },
+        { time: "TBA", genre: "SET", act: "GLITTERMUTT" },
+        { time: "TBA", genre: "SET", act: "M4NUAL",     tag: "CLOSE" }
+      ]
+    };
+
+    // Helpers
+    const $ = (id) => document.getElementById(id);
+    function escapeHtml(str){
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[c]));
+    }
+
+    // Apply config to DOM
+    $("eventName").textContent = CONFIG.eventName;
+    $("eventTagline").textContent = CONFIG.tagline;
+    $("eventDateText").textContent = CONFIG.eventDateLabel;
+    $("doorsText").textContent = CONFIG.doorsLabel;
+    $("cityText").textContent = CONFIG.cityLabel;
+    $("venueText").textContent = CONFIG.venueLabel;
+    $("ticketBtn").href = CONFIG.ticketUrl;
+    $("year").textContent = new Date().getFullYear();
+
+    // Render lineup
+    const root = $("lineupRoot");
+    root.innerHTML = "";
+    for (const item of CONFIG.lineup) {
+      const row = document.createElement("div");
+      row.className = "row";
+      row.innerHTML = `
+        <div class="time">${escapeHtml(item.time)}</div>
+        <div class="slot">
+          <div class="genre">${escapeHtml(item.genre || "")}</div>
+          <div class="act">
+            <span>${escapeHtml(item.act)}</span>
+            ${item.tag ? `<span class="tag">${escapeHtml(item.tag)}</span>` : ""}
+          </div>
+        </div>
+      `;
+      root.appendChild(row);
+    }
+
+    // Copy button
+    $("copyBtn").addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(CONFIG.copyText);
+        $("copyBtn").textContent = "COPIED ✓";
+        setTimeout(() => ($("copyBtn").textContent = "COPY INFO"), 1200);
+      }catch{
+        window.prompt("Copy this:", CONFIG.copyText);
+      }
+    });
+
+    // Countdown: only if eventDateISO is set
+    const countdownEl = $("countdown");
+    function startCountdown(){
+      const eventDate = new Date(CONFIG.eventDateISO);
+      if (!CONFIG.eventDateISO || Number.isNaN(eventDate.getTime())) {
+        countdownEl.textContent = "DATE TBA";
+        return;
+      }
+
+      function tick(){
+        const now = new Date();
+        const diff = eventDate - now;
+
+        if (diff <= 0){
+          countdownEl.textContent = "HAPPENING NOW";
+          return;
+        }
+        const s = Math.floor(diff / 1000);
+        const d = Math.floor(s / 86400);
+        const h = Math.floor((s % 86400) / 3600);
+        const m = Math.floor((s % 3600) / 60);
+
+        const parts = [];
+        if (d) parts.push(`${d}d`);
+        parts.push(`${String(h).padStart(2,"0")}h`);
+        parts.push(`${String(m).padStart(2,"0")}m`);
+        countdownEl.textContent = `STARTS IN ${parts.join(" ")}`;
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    }
+    startCountdown();
+  </script>
+</body>
+</html>
 
