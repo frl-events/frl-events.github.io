@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="MAUL — ATL's Primier Furry Nightclub Event" />
+  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event" />
   <meta name="theme-color" content="#0b0b10" />
   <title>MAUL</title>
 
@@ -198,15 +198,6 @@
       flex-wrap:wrap;
     }
 
-    .tag{
-      font-family: var(--mono);
-      font-size: 11px;
-      color: rgba(0,0,0,.85);
-      background: linear-gradient(90deg, var(--accentA), var(--accentB));
-      padding: 4px 8px;
-      border-radius: 999px;
-    }
-
     .meta{
       display:flex;
       flex-wrap:wrap;
@@ -262,19 +253,6 @@
     a.button:hover{ transform: translateY(-1px); filter: brightness(1.06); }
     a.button:active{ transform: translateY(0px); filter: brightness(0.98); }
 
-    button.ghost{
-      font-family: var(--mono);
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.80);
-      padding: 12px 14px;
-      cursor:pointer;
-      transition: transform .12s ease, background .12s ease;
-    }
-    button.ghost:hover{ transform: translateY(-1px); background: rgba(255,255,255,.05); }
-    button.ghost:active{ transform: translateY(0px); }
-
     .about{
       margin-top: 16px;
       color: var(--muted);
@@ -316,7 +294,7 @@
     @media (prefers-reduced-motion: reduce){
       .bg{ animation:none; }
       .flicker{ animation:none; }
-      a.button, button.ghost{ transition:none; }
+      a.button{ transition:none; }
     }
   </style>
 </head>
@@ -330,9 +308,7 @@
       <header>
         <div>
           <h1 class="title flicker" id="eventName">MAUL</h1>
-          <p class="sub" id="eventTagline">
-            North Atlanta • location TBA • USBEAN / BOUNCECRAFT / PUKI / GLITTERMUTT / M4NUAL
-          </p>
+          <p class="sub" id="eventTagline">MAUL — ATL's Premier Furry Nightclub Event</p>
         </div>
 
         <div class="badge" id="countdown">LOADING…</div>
@@ -344,7 +320,7 @@
 
       <section class="meta" aria-label="Event info">
         <div class="left">
-          <span class="pill" id="eventDateText">THU • FEB 26, 2026</span>
+          <span class="pill" id="eventDateText">SAT • FEB 28, 2026</span>
           <span class="pill" id="doorsText">DOORS 8:30PM</span>
           <span class="pill" id="cityText">NORTH ATLANTA</span>
         </div>
@@ -353,64 +329,45 @@
       </section>
 
       <div class="cta">
-        <a class="button" id="ticketBtn" href="#" target="_blank" rel="noopener">
+        <a class="button" id="ticketBtn" href="https://shotgun.live/events/maul?utm_source=frl-website" target="_blank" rel="noopener">
           BUY TICKETS
         </a>
-
-        <button class="ghost" id="copyBtn" type="button" title="Copy info">
-          COPY INFO
-        </button>
       </div>
 
       <p class="about" id="aboutText">
-        Doors at 8:30. Music starts at 9. Location drops closer to showtime to ticket holders / RSVPs.
+        Doors at 8:30 PM. Music 9:00 PM – 2:00 AM. Venue drops closer to the event.
       </p>
 
       <footer>
         <span id="footerLeft">© <span id="year"></span> MAUL</span>
-        <span id="footerRight">CONTACT: @yourhandle</span>
+        <span id="footerRight">CONTACT: @frlevents</span>
       </footer>
     </main>
   </div>
 
   <script>
-    /**
-     * EDIT THESE VALUES ↓↓↓
-     */
     const CONFIG = {
       eventName: "MAUL",
-      tagline: "North Atlanta • location TBA • USBEAN / BOUNCECRAFT / PUKI / GLITTERMUTT / M4NUAL",
+      description: "MAUL — ATL's Premier Furry Nightclub Event",
 
-      // Countdown uses the viewer's local timezone.
-      // Feb 26, 2026 — doors 8:30pm, music 9:00pm
-      eventDateISO: "2026-02-26T21:00:00",
+      // Feb 28, 2026 — show starts 9:00pm (countdown uses viewer's local timezone)
+      showStartISO: "2026-02-28T21:00:00",
 
-      eventDateLabel: "THU • FEB 26, 2026",
+      eventDateLabel: "SAT • FEB 28, 2026",
       doorsLabel: "DOORS 8:30PM",
       cityLabel: "NORTH ATLANTA",
       venueLabel: "LOCATION: TBD",
 
-      // Put your real ticket link here
-      ticketUrl: "#",
-
-      // Copy button text
-      copyText: [
-        "MAUL",
-        "Thu, Feb 26, 2026",
-        "Doors 8:30PM • Music 9:00PM",
-        "North Atlanta • Location TBD",
-        "Lineup (1hr sets): USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL",
-        "Tickets: (add link)",
-        "Contact: @yourhandle"
-      ].join("\n"),
+      ticketUrl: "https://shotgun.live/events/maul?utm_source=frl-website",
+      contactHandle: "@frlevents",
 
       // 1 hour each, starting at 9:00 PM
       lineup: [
-        { time: "9:00PM",  genre: "SET 1", act: "USBEAN",      tag: "OPEN"  },
-        { time: "10:00PM", genre: "SET 2", act: "BOUNCECRAFT"               },
-        { time: "11:00PM", genre: "SET 3", act: "PUKI"                      },
-        { time: "12:00AM", genre: "SET 4", act: "GLITTERMUTT"               },
-        { time: "1:00AM",  genre: "SET 5", act: "M4NUAL",      tag: "CLOSE" }
+        { time: "9:00PM",  label: "SET 1", act: "USBEAN"      },
+        { time: "10:00PM", label: "SET 2", act: "BOUNCECRAFT" },
+        { time: "11:00PM", label: "SET 3", act: "PUKI"        },
+        { time: "12:00AM", label: "SET 4", act: "GLITTERMUTT" },
+        { time: "1:00AM",  label: "SET 5", act: "M4NUAL"      }
       ]
     };
 
@@ -424,12 +381,13 @@
 
     // Apply config to DOM
     $("eventName").textContent = CONFIG.eventName;
-    $("eventTagline").textContent = CONFIG.tagline;
+    $("eventTagline").textContent = CONFIG.description;
     $("eventDateText").textContent = CONFIG.eventDateLabel;
     $("doorsText").textContent = CONFIG.doorsLabel;
     $("cityText").textContent = CONFIG.cityLabel;
     $("venueText").textContent = CONFIG.venueLabel;
     $("ticketBtn").href = CONFIG.ticketUrl;
+    $("footerRight").textContent = `CONTACT: ${CONFIG.contactHandle}`;
     $("year").textContent = new Date().getFullYear();
 
     // Render lineup
@@ -441,38 +399,24 @@
       row.innerHTML = `
         <div class="time">${escapeHtml(item.time)}</div>
         <div class="slot">
-          <div class="genre">${escapeHtml(item.genre || "")}</div>
-          <div class="act">
-            <span>${escapeHtml(item.act)}</span>
-            ${item.tag ? `<span class="tag">${escapeHtml(item.tag)}</span>` : ""}
-          </div>
+          <div class="genre">${escapeHtml(item.label)}</div>
+          <div class="act"><span>${escapeHtml(item.act)}</span></div>
         </div>
       `;
       root.appendChild(row);
     }
 
-    // Copy button
-    $("copyBtn").addEventListener("click", async () => {
-      try{
-        await navigator.clipboard.writeText(CONFIG.copyText);
-        $("copyBtn").textContent = "COPIED ✓";
-        setTimeout(() => ($("copyBtn").textContent = "COPY INFO"), 1200);
-      }catch{
-        window.prompt("Copy this:", CONFIG.copyText);
-      }
-    });
-
     // Countdown
     const countdownEl = $("countdown");
-    const eventDate = new Date(CONFIG.eventDateISO);
+    const showStart = new Date(CONFIG.showStartISO);
 
     function tick(){
-      if (!CONFIG.eventDateISO || Number.isNaN(eventDate.getTime())) {
+      if (Number.isNaN(showStart.getTime())) {
         countdownEl.textContent = "SET DATE";
         return;
       }
       const now = new Date();
-      const diff = eventDate - now;
+      const diff = showStart - now;
 
       if (diff <= 0){
         countdownEl.textContent = "HAPPENING NOW";
