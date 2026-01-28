@@ -95,7 +95,7 @@
     .panel{
       width:min(760px, 100%);
       border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.02));
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 34px 26px 22px;
@@ -121,16 +121,13 @@
       margin-bottom: 18px;
     }
 
-    .title{
-      line-height:1.0;
-      letter-spacing: .08em;
-      font-weight: 700;
-      font-size: clamp(44px, 8vw, 84px);
-      margin:0;
-      text-transform: uppercase;
-      text-shadow:
-        0 0 18px rgba(120,246,255,.18),
-        0 0 22px rgba(255,79,216,.14);
+    .titleImg{
+      display:block;
+      width: min(560px, 100%);
+      height: auto;
+      margin: 0;
+      filter: drop-shadow(0 0 18px rgba(120,246,255,.18))
+              drop-shadow(0 0 22px rgba(255,79,216,.14));
     }
 
     .badge{
@@ -143,10 +140,11 @@
       background: rgba(0,0,0,.20);
       backdrop-filter: blur(6px);
       white-space:nowrap;
+      align-self:flex-start;
     }
 
     .sub{
-      margin: 8px 0 0;
+      margin: 10px 0 0;
       color: var(--muted);
       font-size: 15px;
       max-width: 62ch;
@@ -271,29 +269,16 @@
       font-size: 12px;
     }
 
-    .flicker{ animation: flicker 6.5s infinite; }
-    @keyframes flicker{
-      0%, 100% { opacity: 1; }
-      1% { opacity: .88; }
-      2% { opacity: 1; }
-      38% { opacity: 1; }
-      39% { opacity: .92; }
-      40% { opacity: 1; }
-      79% { opacity: 1; }
-      80% { opacity: .90; }
-      81% { opacity: 1; }
-    }
-
     @media (max-width: 520px){
       .panel{ padding: 26px 18px 18px; }
       .row{ grid-template-columns: 88px 1fr; }
       .time{ font-size: 16px; }
       .act{ font-size: 16px; }
+      .titleImg{ width: min(420px, 100%); }
     }
 
     @media (prefers-reduced-motion: reduce){
       .bg{ animation:none; }
-      .flicker{ animation:none; }
       a.button{ transition:none; }
     }
   </style>
@@ -307,7 +292,15 @@
     <main class="panel" role="main">
       <header>
         <div>
-          <h1 class="title flicker" id="eventName">MAUL</h1>
+          <img
+            class="titleImg"
+            src="./MAUL%20HEADER.png"
+            alt="MAUL"
+            width="1200"
+            height="350"
+            loading="eager"
+            decoding="async"
+          />
           <p class="sub" id="eventTagline">MAUL — ATL's Premier Furry Nightclub Event</p>
         </div>
 
@@ -322,7 +315,8 @@
         <div class="left">
           <span class="pill" id="eventDateText">SAT • FEB 28, 2026</span>
           <span class="pill" id="doorsText">DOORS 8:30PM</span>
-          <span class="pill" id="cityText">NORTH ATLANTA</span>
+          <span class="pill" id="cityText">DORAVILLE</span>
+          <span class="pill" id="closeText">CLOSES 2:30AM</span>
         </div>
 
         <span class="pill" id="venueText">LOCATION: TBD</span>
@@ -347,7 +341,6 @@
 
   <script>
     const CONFIG = {
-      eventName: "MAUL",
       description: "MAUL — ATL's Premier Furry Nightclub Event",
 
       // Feb 28, 2026 — show starts 9:00pm (countdown uses viewer's local timezone)
@@ -355,7 +348,8 @@
 
       eventDateLabel: "SAT • FEB 28, 2026",
       doorsLabel: "DOORS 8:30PM",
-      cityLabel: "NORTH ATLANTA",
+      closesLabel: "CLOSES 2:30AM",
+      cityLabel: "DORAVILLE",
       venueLabel: "LOCATION: TBD",
 
       ticketUrl: "https://shotgun.live/events/maul?utm_source=frl-website",
@@ -371,7 +365,6 @@
       ]
     };
 
-    // Helpers
     const $ = (id) => document.getElementById(id);
     function escapeHtml(str){
       return String(str).replace(/[&<>"']/g, (c) => ({
@@ -379,11 +372,10 @@
       }[c]));
     }
 
-    // Apply config to DOM
-    $("eventName").textContent = CONFIG.eventName;
     $("eventTagline").textContent = CONFIG.description;
     $("eventDateText").textContent = CONFIG.eventDateLabel;
     $("doorsText").textContent = CONFIG.doorsLabel;
+    $("closeText").textContent = CONFIG.closesLabel;
     $("cityText").textContent = CONFIG.cityLabel;
     $("venueText").textContent = CONFIG.venueLabel;
     $("ticketBtn").href = CONFIG.ticketUrl;
