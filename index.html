@@ -126,8 +126,12 @@
       width: min(560px, 100%);
       height: auto;
       margin: 0;
-      filter: drop-shadow(0 0 18px rgba(120,246,255,.18))
-              drop-shadow(0 0 22px rgba(255,79,216,.14));
+      border-radius: var(--radius);          /* rounded corners */
+      overflow: hidden;                       /* ensures rounding clips */
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.10);
+      filter: drop-shadow(0 0 18px rgba(120,246,255,.12))
+              drop-shadow(0 0 22px rgba(255,79,216,.10));
     }
 
     .badge{
@@ -319,7 +323,7 @@
           <span class="pill" id="closeText">CLOSES 2:30AM</span>
         </div>
 
-        <span class="pill" id="venueText">LOCATION: TBD</span>
+        <span class="pill" id="venueText">LOCATION: TBA</span>
       </section>
 
       <div class="cta">
@@ -350,7 +354,7 @@
       doorsLabel: "DOORS 8:30PM",
       closesLabel: "CLOSES 2:30AM",
       cityLabel: "DORAVILLE",
-      venueLabel: "LOCATION: TBD",
+      venueLabel: "LOCATION: TBA",
 
       ticketUrl: "https://shotgun.live/events/maul?utm_source=frl-website",
       contactHandle: "@frlevents",
