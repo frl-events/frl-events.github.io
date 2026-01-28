@@ -12,7 +12,6 @@
       --fg: rgba(255,255,255,.92);
       --stroke: rgba(255,255,255,.14);
       --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius: 22px;
     }
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
@@ -52,17 +51,17 @@
       width: 100%;
       height: auto;
       display:block;
-      border-radius: var(--radius);
+      border-radius: 0;
       border: 1px solid var(--stroke);
       box-shadow: var(--shadow);
       background: rgba(255,255,255,.02);
     }
 
-    /* Buy Tickets overlay ~2/3 down the poster */
+    /* Buy Tickets overlay ~4/5 down the poster */
     .cta{
       position:absolute;
       left: 50%;
-      top: 66%;
+      top: 80%; /* <- 4/5ths down */
       transform: translate(-50%, -50%);
       text-decoration:none;
       padding: 14px 18px;
@@ -102,7 +101,6 @@
 
   <main class="wrap">
     <div class="frame">
-      <!-- Put MAULPOSTERFINAL_website.png in the repo root next to index.html -->
       <img
         class="poster"
         src="./MAULPOSTERFINAL_website.png"
