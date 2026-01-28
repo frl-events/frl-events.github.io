@@ -4,39 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event" />
-  <meta name="theme-color" content="#0b0b10" />
+  <meta name="theme-color" content="#07070c" />
   <title>MAUL</title>
-
-  <!-- Optional font (delete for 100% self-contained) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root{
       --bg: #07070c;
       --fg: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --dim: rgba(255,255,255,.40);
-      --accentA: #78f6ff;
-      --accentB: #ff4fd8;
-      --accentC: #a8ff67;
-      --card: rgba(255,255,255,.04);
-      --stroke: rgba(255,255,255,.12);
+      --stroke: rgba(255,255,255,.14);
       --shadow: 0 20px 60px rgba(0,0,0,.55);
-      --radius: 20px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      --sans: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --radius: 22px;
     }
-
     *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
       background: var(--bg);
       color: var(--fg);
-      font-family: var(--sans);
       overflow-x:hidden;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
     .bg{
@@ -48,40 +33,6 @@
         radial-gradient(50vmax 40vmax at 45% 75%, rgba(168,255,103,.10), transparent 62%),
         linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%, rgba(255,255,255,.01));
       filter: blur(20px) saturate(130%);
-      animation: drift 16s ease-in-out infinite alternate;
-      transform: translate3d(0,0,0);
-    }
-    @keyframes drift{
-      from{ transform: translate(-2.5%, -1.5%) scale(1.02); }
-      to  { transform: translate( 2.5%,  1.5%) scale(1.04); }
-    }
-
-    .fx::before,
-    .fx::after{
-      content:"";
-      position:fixed; inset:0;
-      pointer-events:none;
-      z-index:-2;
-    }
-    .fx::before{
-      background:
-        repeating-linear-gradient(
-          180deg,
-          rgba(255,255,255,.030) 0px,
-          rgba(255,255,255,.030) 1px,
-          transparent 2px,
-          transparent 6px
-        );
-      mix-blend-mode: overlay;
-      opacity:.35;
-    }
-    .fx::after{
-      background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.06), transparent 35%),
-        radial-gradient(circle at 80% 60%, rgba(255,255,255,.05), transparent 40%),
-        radial-gradient(circle at 50% 85%, rgba(255,255,255,.04), transparent 45%);
-      opacity:.25;
-      filter: blur(10px);
     }
 
     .wrap{
@@ -89,350 +40,89 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 56px 20px;
+      padding: 28px 16px;
     }
 
-    .panel{
-      width:min(760px, 100%);
-      border: 1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 34px 26px 22px;
-      position:relative;
-      overflow:hidden;
+    .frame{
+      width: min(980px, 100%);
+      position: relative;
     }
 
-    .panel::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: linear-gradient(135deg, rgba(120,246,255,.18), rgba(255,79,216,.12), rgba(168,255,103,.10));
-      filter: blur(18px);
-      opacity:.35;
-      z-index:-1;
-    }
-
-    header{
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      margin-bottom: 18px;
-    }
-
-    .titleImg{
-      display:block;
-      width: min(560px, 100%);
+    .poster{
+      width: 100%;
       height: auto;
-      margin: 0;
-      border-radius: var(--radius);          /* rounded corners */
-      overflow: hidden;                       /* ensures rounding clips */
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.10);
-      filter: drop-shadow(0 0 18px rgba(120,246,255,.12))
-              drop-shadow(0 0 22px rgba(255,79,216,.10));
-    }
-
-    .badge{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
+      display:block;
+      border-radius: var(--radius);
       border: 1px solid var(--stroke);
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.20);
-      backdrop-filter: blur(6px);
-      white-space:nowrap;
-      align-self:flex-start;
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.02);
     }
 
-    .sub{
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 15px;
-      max-width: 62ch;
-    }
-
-    .lineup{
-      margin-top: 22px;
-      border-top: 1px solid var(--stroke);
-      padding-top: 18px;
-    }
-
-    .row{
-      display:grid;
-      grid-template-columns: 110px 1fr;
-      gap: 14px;
-      padding: 12px 0;
-      border-bottom: 1px dashed rgba(255,255,255,.10);
-    }
-
-    .time{
-      font-family: var(--mono);
-      font-size: 18px;
-      color: rgba(255,255,255,.85);
-      letter-spacing:.04em;
-    }
-
-    .slot{
-      display:flex;
-      flex-direction:column;
-      gap: 2px;
-    }
-
-    .genre{
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing:.12em;
-      font-size: 12px;
-      color: var(--dim);
-    }
-
-    .act{
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing:.02em;
-      color: var(--fg);
-      display:flex;
-      gap:10px;
-      align-items:baseline;
-      flex-wrap:wrap;
-    }
-
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
-      align-items:center;
-      justify-content:space-between;
-      margin-top: 18px;
-      padding: 14px 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 14px;
-      background: rgba(0,0,0,.20);
-    }
-    .meta .left{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px 14px;
-      align-items:center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .pill{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,.86);
-      border: 1px solid rgba(255,255,255,.14);
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.03);
-    }
-
+    /* Buy Tickets overlay ~2/3 down the poster */
     .cta{
-      margin-top: 18px;
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    a.button{
-      appearance:none;
-      border: 1px solid rgba(255,255,255,.18);
-      background: linear-gradient(135deg, rgba(120,246,255,.18), rgba(255,79,216,.18));
-      color: rgba(255,255,255,.92);
+      position:absolute;
+      left: 50%;
+      top: 66%;
+      transform: translate(-50%, -50%);
       text-decoration:none;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 700;
-      letter-spacing:.04em;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.40);
+      color: rgba(255,255,255,.95);
+      font-weight: 800;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       transition: transform .12s ease, filter .12s ease;
+      user-select:none;
+      white-space:nowrap;
     }
-    a.button:hover{ transform: translateY(-1px); filter: brightness(1.06); }
-    a.button:active{ transform: translateY(0px); filter: brightness(0.98); }
-
-    .about{
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
-    }
-
-    footer{
-      margin-top: 18px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px 16px;
-      justify-content:space-between;
-      color: rgba(255,255,255,.45);
-      font-family: var(--mono);
-      font-size: 12px;
-    }
+    .cta:hover{ transform: translate(-50%, -50%) translateY(-1px); filter: brightness(1.06); }
+    .cta:active{ transform: translate(-50%, -50%); filter: brightness(.98); }
 
     @media (max-width: 520px){
-      .panel{ padding: 26px 18px 18px; }
-      .row{ grid-template-columns: 88px 1fr; }
-      .time{ font-size: 16px; }
-      .act{ font-size: 16px; }
-      .titleImg{ width: min(420px, 100%); }
+      .wrap{ padding: 18px 12px; }
+      .cta{
+        padding: 12px 14px;
+        border-radius: 14px;
+        font-size: 13px;
+      }
     }
-
     @media (prefers-reduced-motion: reduce){
-      .bg{ animation:none; }
-      a.button{ transition:none; }
+      .cta{ transition:none; }
     }
   </style>
 </head>
 
 <body>
   <div class="bg" aria-hidden="true"></div>
-  <div class="fx" aria-hidden="true"></div>
 
-  <div class="wrap">
-    <main class="panel" role="main">
-      <header>
-        <div>
-          <img
-            class="titleImg"
-            src="./MAUL%20HEADER.png"
-            alt="MAUL"
-            width="1200"
-            height="350"
-            loading="eager"
-            decoding="async"
-          />
-          <p class="sub" id="eventTagline">MAUL — ATL's Premier Furry Nightclub Event</p>
-        </div>
+  <main class="wrap">
+    <div class="frame">
+      <!-- Put MAULPOSTERFINAL_website.png in the repo root next to index.html -->
+      <img
+        class="poster"
+        src="./MAULPOSTERFINAL_website.png"
+        alt="MAUL Poster"
+        width="2000"
+        height="2600"
+        loading="eager"
+        decoding="async"
+      />
 
-        <div class="badge" id="countdown">LOADING…</div>
-      </header>
-
-      <section class="lineup" aria-label="Lineup">
-        <div id="lineupRoot"></div>
-      </section>
-
-      <section class="meta" aria-label="Event info">
-        <div class="left">
-          <span class="pill" id="eventDateText">SAT • FEB 28, 2026</span>
-          <span class="pill" id="doorsText">DOORS 8:30PM</span>
-          <span class="pill" id="cityText">DORAVILLE</span>
-          <span class="pill" id="closeText">CLOSES 2:30AM</span>
-        </div>
-
-        <span class="pill" id="venueText">LOCATION: TBA</span>
-      </section>
-
-      <div class="cta">
-        <a class="button" id="ticketBtn" href="https://shotgun.live/events/maul?utm_source=frl-website" target="_blank" rel="noopener">
-          BUY TICKETS
-        </a>
-      </div>
-
-      <p class="about" id="aboutText">
-        Doors at 8:30 PM. Music 9:00 PM – 2:00 AM. Venue drops closer to the event.
-      </p>
-
-      <footer>
-        <span id="footerLeft">© <span id="year"></span> MAUL</span>
-        <span id="footerRight">CONTACT: @frlevents</span>
-      </footer>
-    </main>
-  </div>
-
-  <script>
-    const CONFIG = {
-      description: "MAUL — ATL's Premier Furry Nightclub Event",
-
-      // Feb 28, 2026 — show starts 9:00pm (countdown uses viewer's local timezone)
-      showStartISO: "2026-02-28T21:00:00",
-
-      eventDateLabel: "SAT • FEB 28, 2026",
-      doorsLabel: "DOORS 8:30PM",
-      closesLabel: "CLOSES 2:30AM",
-      cityLabel: "DORAVILLE",
-      venueLabel: "LOCATION: TBA",
-
-      ticketUrl: "https://shotgun.live/events/maul?utm_source=frl-website",
-      contactHandle: "@frlevents",
-
-      // 1 hour each, starting at 9:00 PM
-      lineup: [
-        { time: "9:00PM",  label: "SET 1", act: "USBEAN"      },
-        { time: "10:00PM", label: "SET 2", act: "BOUNCECRAFT" },
-        { time: "11:00PM", label: "SET 3", act: "PUKI"        },
-        { time: "12:00AM", label: "SET 4", act: "GLITTERMUTT" },
-        { time: "1:00AM",  label: "SET 5", act: "M4NUAL"      }
-      ]
-    };
-
-    const $ = (id) => document.getElementById(id);
-    function escapeHtml(str){
-      return String(str).replace(/[&<>"']/g, (c) => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-      }[c]));
-    }
-
-    $("eventTagline").textContent = CONFIG.description;
-    $("eventDateText").textContent = CONFIG.eventDateLabel;
-    $("doorsText").textContent = CONFIG.doorsLabel;
-    $("closeText").textContent = CONFIG.closesLabel;
-    $("cityText").textContent = CONFIG.cityLabel;
-    $("venueText").textContent = CONFIG.venueLabel;
-    $("ticketBtn").href = CONFIG.ticketUrl;
-    $("footerRight").textContent = `CONTACT: ${CONFIG.contactHandle}`;
-    $("year").textContent = new Date().getFullYear();
-
-    // Render lineup
-    const root = $("lineupRoot");
-    root.innerHTML = "";
-    for (const item of CONFIG.lineup) {
-      const row = document.createElement("div");
-      row.className = "row";
-      row.innerHTML = `
-        <div class="time">${escapeHtml(item.time)}</div>
-        <div class="slot">
-          <div class="genre">${escapeHtml(item.label)}</div>
-          <div class="act"><span>${escapeHtml(item.act)}</span></div>
-        </div>
-      `;
-      root.appendChild(row);
-    }
-
-    // Countdown
-    const countdownEl = $("countdown");
-    const showStart = new Date(CONFIG.showStartISO);
-
-    function tick(){
-      if (Number.isNaN(showStart.getTime())) {
-        countdownEl.textContent = "SET DATE";
-        return;
-      }
-      const now = new Date();
-      const diff = showStart - now;
-
-      if (diff <= 0){
-        countdownEl.textContent = "HAPPENING NOW";
-        return;
-      }
-
-      const s = Math.floor(diff / 1000);
-      const d = Math.floor(s / 86400);
-      const h = Math.floor((s % 86400) / 3600);
-      const m = Math.floor((s % 3600) / 60);
-
-      const parts = [];
-      if (d) parts.push(`${d}d`);
-      parts.push(`${String(h).padStart(2,"0")}h`);
-      parts.push(`${String(m).padStart(2,"0")}m`);
-      countdownEl.textContent = `STARTS IN ${parts.join(" ")}`;
-    }
-
-    tick();
-    setInterval(tick, 1000);
-  </script>
+      <a
+        class="cta"
+        href="https://shotgun.live/events/maul?utm_source=frl-website"
+        target="_blank"
+        rel="noopener"
+        aria-label="Buy tickets for MAUL"
+      >
+        Buy Tickets
+      </a>
+    </div>
+  </main>
 </body>
 </html>
