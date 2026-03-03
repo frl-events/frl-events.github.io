@@ -3,13 +3,75 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>MAUL | ATL’s Premier Furry Nightclub Event (Doraville) | Feb 28, 2026</title>
   <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event" />
   <meta name="theme-color" content="#07070c" />
-  <title>MAUL</title>
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Canonical: set to your GitHub Pages URL -->
+  <link rel="canonical" href="https://YOURNAME.github.io/YOURREPO/" />
+
+  <!-- Preload poster for faster Largest Contentful Paint -->
+  <link rel="preload" as="image" href="./MAULPOSTERFINAL_website.png" imagesrcset="./MAULPOSTERFINAL_website.png" />
+
+  <!-- Open Graph (social + some search surfaces) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
+  <meta property="og:description" content="Feb 28, 2026 • Doraville, GA • Doors 8:30PM • 9:00PM–2:30AM • USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL" />
+  <meta property="og:url" content="https://YOURNAME.github.io/YOURREPO/" />
+  <meta property="og:image" content="https://YOURNAME.github.io/YOURREPO/MAULPOSTERFINAL_website.png" />
+  <meta property="og:image:alt" content="MAUL poster — ATL’s Premier Furry Nightclub Event — Feb 28, 2026 — Doraville, GA — Tickets on Shotgun" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
+  <meta name="twitter:description" content="Feb 28, 2026 • Doraville, GA • Doors 8:30PM • 9:00PM–2:30AM • Tickets on Shotgun" />
+  <meta name="twitter:image" content="https://YOURNAME.github.io/YOURREPO/MAULPOSTERFINAL_website.png" />
+
+  <!-- Structured Data: Event -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "MAUL",
+    "description": "MAUL — ATL's Premier Furry Nightclub Event",
+    "startDate": "2026-02-28T21:00:00-05:00",
+    "endDate": "2026-03-01T02:30:00-05:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Doraville (Venue TBA)",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Doraville",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      }
+    },
+    "performer": [
+      { "@type": "PerformingGroup", "name": "USBEAN" },
+      { "@type": "PerformingGroup", "name": "BOUNCECRAFT" },
+      { "@type": "PerformingGroup", "name": "PUKI" },
+      { "@type": "PerformingGroup", "name": "GLITTERMUTT" },
+      { "@type": "PerformingGroup", "name": "M4NUAL" }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "url": "https://shotgun.live/events/maul?utm_source=frl-website",
+      "availability": "https://schema.org/InStock"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "FRL Events"
+    }
+  }
+  </script>
+
   <style>
     :root{
       --bg: #07070c;
-      --fg: rgba(255,255,255,.92);
       --stroke: rgba(255,255,255,.14);
       --shadow: 0 20px 60px rgba(0,0,0,.55);
     }
@@ -18,7 +80,6 @@
     body{
       margin:0;
       background: var(--bg);
-      color: var(--fg);
       overflow-x:hidden;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
@@ -47,6 +108,7 @@
       position: relative;
     }
 
+    /* Poster (square edges) */
     .poster{
       width: 100%;
       height: auto;
@@ -61,7 +123,7 @@
     .cta{
       position:absolute;
       left: 50%;
-      top: 80%; /* <- 4/5ths down */
+      top: 80%;
       transform: translate(-50%, -50%);
       text-decoration:none;
       padding: 14px 18px;
@@ -84,14 +146,19 @@
 
     @media (max-width: 520px){
       .wrap{ padding: 18px 12px; }
-      .cta{
-        padding: 12px 14px;
-        border-radius: 14px;
-        font-size: 13px;
-      }
+      .cta{ padding: 12px 14px; border-radius: 14px; font-size: 13px; }
     }
     @media (prefers-reduced-motion: reduce){
       .cta{ transition:none; }
+    }
+
+    /* Screen-reader only (adds textual content without changing visuals) */
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
     }
   </style>
 </head>
@@ -100,15 +167,24 @@
   <div class="bg" aria-hidden="true"></div>
 
   <main class="wrap">
+    <!-- Text content for SEO/AI extraction + accessibility (no visual change) -->
+    <h1 class="sr-only">MAUL — ATL’s Premier Furry Nightclub Event</h1>
+    <p class="sr-only">
+      Date: February 28, 2026. City: Doraville, GA. Venue: TBA. Doors: 8:30 PM. Music: 9:00 PM to 2:30 AM.
+      Lineup: USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL.
+      Tickets: https://shotgun.live/events/maul?utm_source=frl-website. Contact: @frlevents.
+    </p>
+
     <div class="frame">
       <img
         class="poster"
         src="./MAULPOSTERFINAL_website.png"
-        alt="MAUL Poster"
+        alt="MAUL poster — ATL’s Premier Furry Nightclub Event — Feb 28, 2026 — Doraville, GA — USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL — Tickets on Shotgun"
         width="2000"
         height="2600"
         loading="eager"
         decoding="async"
+        fetchpriority="high"
       />
 
       <a
