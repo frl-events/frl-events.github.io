@@ -4,64 +4,32 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>MAUL | ATL’s Premier Furry Nightclub Event | Doraville, GA</title>
-  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event. Thank you for coming out! Pics, videos, and future dates coming soon." />
+  <title>MAUL | ATL’s Premier Furry Nightclub Event</title>
+  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event. THANK YOU EVERYONE FOR COMING OUT! PICS, VIDEOS, AND FUTURE DATES COMING SOON!" />
   <meta name="theme-color" content="#07070c" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Canonical URL for this page -->
   <link rel="canonical" href="https://frl.events/maul/" />
 
-  <!-- Preload poster for speed -->
-  <link rel="preload" as="image" href="/MAULPOSTERFINAL_website.png" />
+  <!-- Preload poster (files live in /maul/) -->
+  <link rel="preload" as="image" href="./MAULPOSTERFINAL_website.png" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Social preview (use absolute URLs) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
   <meta property="og:description" content="THANK YOU EVERYONE FOR COMING OUT! PICS, VIDEOS, AND FUTURE DATES COMING SOON!" />
   <meta property="og:url" content="https://frl.events/maul/" />
-  <meta property="og:image" content="https://frl.events/MAULPOSTERFINAL_website.png" />
-  <meta property="og:image:alt" content="MAUL poster — ATL’s Premier Furry Nightclub Event" />
+
+  <!-- Prefer banner for social card. If you want the poster instead, swap to MAULPOSTERFINAL_website.png -->
+  <meta property="og:image" content="https://frl.events/maul/MAUL%20HEADER.png" />
+  <meta property="og:image:alt" content="MAUL — ATL's Premier Furry Nightclub Event" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
   <meta name="twitter:description" content="THANK YOU EVERYONE FOR COMING OUT! PICS, VIDEOS, AND FUTURE DATES COMING SOON!" />
-  <meta name="twitter:image" content="https://frl.events/MAULPOSTERFINAL_website.png" />
-
-  <!-- Structured Data: Event (past event is okay; keep facts for AI extraction) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "MAUL",
-    "description": "MAUL — ATL's Premier Furry Nightclub Event",
-    "startDate": "2026-02-28T21:00:00-05:00",
-    "endDate": "2026-03-01T02:30:00-05:00",
-    "eventStatus": "https://schema.org/EventCompleted",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "location": {
-      "@type": "Place",
-      "name": "Doraville (Venue TBA)",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Doraville",
-        "addressRegion": "GA",
-        "addressCountry": "US"
-      }
-    },
-    "performer": [
-      { "@type": "PerformingGroup", "name": "USBEAN" },
-      { "@type": "PerformingGroup", "name": "BOUNCECRAFT" },
-      { "@type": "PerformingGroup", "name": "PUKI" },
-      { "@type": "PerformingGroup", "name": "GLITTERMUTT" },
-      { "@type": "PerformingGroup", "name": "M4NUAL" }
-    ],
-    "organizer": {
-      "@type": "Organization",
-      "name": "FRL Events",
-      "sameAs": "https://frl.events/"
-    }
-  }
-  </script>
+  <meta name="twitter:image" content="https://frl.events/maul/MAUL%20HEADER.png" />
 
   <style>
     :root{
@@ -105,6 +73,7 @@
       position: relative;
     }
 
+    /* Poster: square edges */
     .poster{
       width: 100%;
       height: auto;
@@ -137,15 +106,6 @@
       user-select:none;
     }
 
-    .notice span{
-      display:block;
-      color: var(--muted);
-      font-weight: 800;
-      margin-top: 8px;
-      letter-spacing: .02em;
-      text-transform:none;
-    }
-
     @media (max-width: 520px){
       .wrap{ padding: 18px 12px; }
       .notice{
@@ -153,10 +113,9 @@
         border-radius: 16px;
         font-size: 13px;
       }
-      .notice span{ font-size: 12px; }
     }
 
-    /* Screen-reader only (adds text for SEO/AI without visual change) */
+    /* Invisible text for SEO + accessibility (doesn't change visuals) */
     .sr-only{
       position:absolute !important;
       width:1px; height:1px;
@@ -171,19 +130,14 @@
   <div class="bg" aria-hidden="true"></div>
 
   <main class="wrap">
-    <!-- Invisible text for SEO + AI extraction -->
     <h1 class="sr-only">MAUL — ATL’s Premier Furry Nightclub Event</h1>
-    <p class="sr-only">
-      Thank you everyone for coming out. Pics, videos, and future dates coming soon.
-      Event was February 28, 2026 in Doraville, GA. Doors 8:30 PM. Event 9:00 PM to 2:30 AM.
-      Lineup: USBEAN, BOUNCECRAFT, PUKI, GLITTERMUTT, M4NUAL. Contact: @frlevents.
-    </p>
 
     <div class="frame">
+      <!-- Both files live in /maul/ next to this index.html -->
       <img
         class="poster"
-        src="/MAULPOSTERFINAL_website.png"
-        alt="MAUL poster — ATL’s Premier Furry Nightclub Event — Doraville, GA"
+        src="./MAULPOSTERFINAL_website.png"
+        alt="MAUL poster — ATL’s Premier Furry Nightclub Event"
         width="2000"
         height="2600"
         loading="eager"
@@ -192,8 +146,8 @@
       />
 
       <div class="notice" aria-label="Announcement">
-        THANK YOU EVERYONE FOR COMING OUT!
-        <span>Pics, videos, and future dates coming soon!</span>
+        THANK YOU EVERYONE FOR COMING OUT!<br/>
+        PICS, VIDEOS, AND FUTURE DATES COMING SOON!
       </div>
     </div>
   </main>
