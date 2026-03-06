@@ -5,37 +5,33 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   <title>MAUL | ATL’s Premier Furry Nightclub Event</title>
-  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event. THANK YOU EVERYONE FOR COMING OUT! PICS, VIDEOS, AND FUTURE DATES COMING SOON!" />
+  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event. THANK YOU EVERYONE FOR COMING OUT! FUTURE DATES COMING SOON!" />
   <meta name="theme-color" content="#07070c" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
-  <!-- Canonical URL for this page -->
-  <link rel="canonical" href="https://frl.events/maul/" />
+  <!-- IMPORTANT: your repo CNAME is currently www.frl.events -->
+  <link rel="canonical" href="https://www.frl.events/maul/" />
 
-  <!-- Preload poster (files live in /maul/) -->
+  <!-- Preload poster (file lives in /maul/) -->
   <link rel="preload" as="image" href="./MAULPOSTERFINAL_website.png" />
 
-  <!-- Open Graph / Social preview (use absolute URLs) -->
+  <!-- Social preview (banner lives in /maul/; space must be URL-encoded) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
-  <meta property="og:description" content="THANK YOU EVERYONE FOR COMING OUT! PICS, VIDEOS, AND FUTURE DATES COMING SOON!" />
-  <meta property="og:url" content="https://frl.events/maul/" />
-
-  <!-- Prefer banner for social card. If you want the poster instead, swap to MAULPOSTERFINAL_website.png -->
-  <meta property="og:image" content="https://frl.events/maul/MAUL%20HEADER.png" />
+  <meta property="og:description" content="THANK YOU EVERYONE FOR COMING OUT! FUTURE DATES COMING SOON!" />
+  <meta property="og:url" content="https://www.frl.events/maul/" />
+  <meta property="og:image" content="https://www.frl.events/maul/MAUL%20HEADER.png" />
   <meta property="og:image:alt" content="MAUL — ATL's Premier Furry Nightclub Event" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
-  <meta name="twitter:description" content="THANK YOU EVERYONE FOR COMING OUT! PICS, VIDEOS, AND FUTURE DATES COMING SOON!" />
-  <meta name="twitter:image" content="https://frl.events/maul/MAUL%20HEADER.png" />
+  <meta name="twitter:description" content="THANK YOU EVERYONE FOR COMING OUT! FUTURE DATES COMING SOON!" />
+  <meta name="twitter:image" content="https://www.frl.events/maul/MAUL%20HEADER.png" />
 
   <style>
     :root{
       --bg: #07070c;
       --fg: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
       --stroke: rgba(255,255,255,.14);
       --shadow: 0 20px 60px rgba(0,0,0,.55);
     }
@@ -114,15 +110,6 @@
         font-size: 13px;
       }
     }
-
-    /* Invisible text for SEO + accessibility (doesn't change visuals) */
-    .sr-only{
-      position:absolute !important;
-      width:1px; height:1px;
-      padding:0; margin:-1px;
-      overflow:hidden; clip:rect(0,0,0,0);
-      white-space:nowrap; border:0;
-    }
   </style>
 </head>
 
@@ -130,24 +117,19 @@
   <div class="bg" aria-hidden="true"></div>
 
   <main class="wrap">
-    <h1 class="sr-only">MAUL — ATL’s Premier Furry Nightclub Event</h1>
-
     <div class="frame">
-      <!-- Both files live in /maul/ next to this index.html -->
+      <!-- Poster file is in the SAME folder as this index.html -->
       <img
         class="poster"
         src="./MAULPOSTERFINAL_website.png"
         alt="MAUL poster — ATL’s Premier Furry Nightclub Event"
-        width="2000"
-        height="2600"
         loading="eager"
         decoding="async"
-        fetchpriority="high"
       />
 
       <div class="notice" aria-label="Announcement">
         THANK YOU EVERYONE FOR COMING OUT!<br/>
-        PICS, VIDEOS, AND FUTURE DATES COMING SOON!
+        FUTURE DATES COMING SOON!
       </div>
     </div>
   </main>
