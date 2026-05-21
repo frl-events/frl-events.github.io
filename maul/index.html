@@ -4,29 +4,63 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>MAUL | ATL’s Premier Furry Nightclub Event</title>
-  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event. THANK YOU EVERYONE FOR COMING OUT! FUTURE DATES COMING SOON!" />
+  <title>Club MAUL | Doraville, GA | June 13, 2026 | FRL Events</title>
+  <meta name="description" content="MAUL — ATL's Premier Furry Nightclub Event. June 13, 2026 • Doraville, GA • Venue TBA. Tickets on Shotgun." />
   <meta name="theme-color" content="#07070c" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
-  <!-- IMPORTANT: your repo CNAME is currently www.frl.events -->
-  <link rel="canonical" href="https://www.frl.events/maul/" />
+  <!-- If your live canonical host is www.frl.events, change this to https://www.frl.events/maul/ -->
+  <link rel="canonical" href="https://frl.events/maul/" />
 
-  <!-- Preload poster (file lives in /maul/) -->
-  <link rel="preload" as="image" href="./MAULPOSTERFINAL_website.png" />
+  <!-- Preload poster (file lives in /maul/ next to this index.html) -->
+  <link rel="preload" as="image" href="./maul2poster.png" />
 
-  <!-- Social preview (banner lives in /maul/; space must be URL-encoded) -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
-  <meta property="og:description" content="THANK YOU EVERYONE FOR COMING OUT! FUTURE DATES COMING SOON!" />
-  <meta property="og:url" content="https://www.frl.events/maul/" />
-  <meta property="og:image" content="https://www.frl.events/maul/MAUL%20HEADER.png" />
-  <meta property="og:image:alt" content="MAUL — ATL's Premier Furry Nightclub Event" />
+  <meta property="og:title" content="Club MAUL | June 13, 2026" />
+  <meta property="og:description" content="MAUL — ATL's Premier Furry Nightclub Event • Doraville, GA • Venue TBA • Tickets on Shotgun" />
+  <meta property="og:url" content="https://frl.events/maul/" />
+  <meta property="og:image" content="https://frl.events/maul/maul2poster.png" />
+  <meta property="og:image:alt" content="MAUL poster — June 13, 2026 — Doraville, GA — Tickets on Shotgun" />
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MAUL | ATL’s Premier Furry Nightclub Event" />
-  <meta name="twitter:description" content="THANK YOU EVERYONE FOR COMING OUT! FUTURE DATES COMING SOON!" />
-  <meta name="twitter:image" content="https://www.frl.events/maul/MAUL%20HEADER.png" />
+  <meta name="twitter:title" content="Club MAUL | June 13, 2026" />
+  <meta name="twitter:description" content="Doraville, GA • Venue TBA • Tickets on Shotgun" />
+  <meta name="twitter:image" content="https://frl.events/maul/maul2poster.png" />
+
+  <!-- Structured Data: Event (date known; time/venue TBA) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "MAUL",
+    "description": "MAUL — ATL's Premier Furry Nightclub Event",
+    "startDate": "2026-06-13",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Doraville (Venue TBA)",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Doraville",
+        "addressRegion": "GA",
+        "addressCountry": "US"
+      }
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://shotgun.live/events/maul-06-13-2026?utm_source=website",
+      "availability": "https://schema.org/InStock"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "FRL Events",
+      "url": "https://frl.events/"
+    }
+  }
+  </script>
 
   <style>
     :root{
@@ -40,9 +74,9 @@
     body{
       margin:0;
       background: var(--bg);
+      color: var(--fg);
       overflow-x:hidden;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--fg);
     }
 
     .bg{
@@ -69,7 +103,7 @@
       position: relative;
     }
 
-    /* Poster: square edges */
+    /* Poster (square edges) */
     .poster{
       width: 100%;
       height: auto;
@@ -80,35 +114,50 @@
       background: rgba(255,255,255,.02);
     }
 
-    /* Big message overlay ~4/5 down the poster */
-    .notice{
+    /* Tickets overlay ~4/5 down the poster */
+    .cta{
       position:absolute;
       left: 50%;
       top: 80%;
       transform: translate(-50%, -50%);
-      width: min(86%, 720px);
-      text-align:center;
-      padding: 18px 18px;
-      border-radius: 18px;
+      text-decoration:none;
+      padding: 14px 18px;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,.22);
-      background: rgba(0,0,0,.48);
-      box-shadow: 0 10px 30px rgba(0,0,0,.45);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      font-weight: 900;
-      letter-spacing: .04em;
+      background: rgba(0,0,0,.40);
+      color: rgba(255,255,255,.95);
+      font-weight: 800;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      line-height: 1.25;
+      box-shadow: 0 10px 30px rgba(0,0,0,.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform .12s ease, filter .12s ease;
       user-select:none;
+      white-space:nowrap;
     }
+    .cta:hover{ transform: translate(-50%, -50%) translateY(-1px); filter: brightness(1.06); }
+    .cta:active{ transform: translate(-50%, -50%); filter: brightness(.98); }
 
     @media (max-width: 520px){
       .wrap{ padding: 18px 12px; }
-      .notice{
-        padding: 14px 14px;
-        border-radius: 16px;
+      .cta{
+        padding: 12px 14px;
+        border-radius: 14px;
         font-size: 13px;
       }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .cta{ transition:none; }
+    }
+
+    /* Minimal text for accessibility/SEO without changing visuals */
+    .sr-only{
+      position:absolute !important;
+      width:1px; height:1px;
+      padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0);
+      white-space:nowrap; border:0;
     }
   </style>
 </head>
@@ -117,20 +166,30 @@
   <div class="bg" aria-hidden="true"></div>
 
   <main class="wrap">
+    <h1 class="sr-only">Club MAUL — ATL’s Premier Furry Nightclub Event</h1>
+    <p class="sr-only">
+      June 13, 2026 in Doraville, GA. Venue TBA. Tickets: https://shotgun.live/events/maul-06-13-2026?utm_source=website.
+    </p>
+
     <div class="frame">
-      <!-- Poster file is in the SAME folder as this index.html -->
       <img
         class="poster"
-        src="./MAULPOSTERFINAL_website.png"
-        alt="MAUL poster — ATL’s Premier Furry Nightclub Event"
+        src="./maul2poster.png"
+        alt="MAUL poster — June 13, 2026 — Doraville, GA — Tickets on Shotgun"
         loading="eager"
         decoding="async"
+        fetchpriority="high"
       />
 
-      <div class="notice" aria-label="Announcement">
-        THANK YOU EVERYONE FOR COMING OUT!<br/>
-        FUTURE DATES COMING SOON!
-      </div>
+      <a
+        class="cta"
+        href="https://shotgun.live/events/maul-06-13-2026?utm_source=website"
+        target="_blank"
+        rel="noopener"
+        aria-label="Tickets here"
+      >
+        Tickets Here
+      </a>
     </div>
   </main>
 </body>
