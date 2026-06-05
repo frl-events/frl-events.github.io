@@ -289,8 +289,8 @@ dd {
 
 .event-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) repeat(2, minmax(220px, .8fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
   align-items: stretch;
 }
 
@@ -304,16 +304,21 @@ dd {
 }
 
 .event-card-featured {
-  grid-template-columns: minmax(230px, .78fr) minmax(0, 1fr);
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(360px, .9fr) minmax(0, 1fr);
   background: #050505;
 }
 
 .event-card-image {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   min-height: 100%;
   background: #050505;
   display: grid;
   place-items: center;
   padding: 16px;
+  overflow: hidden;
 }
 
 .event-card-image img {
@@ -325,13 +330,51 @@ dd {
 
 .event-card-body {
   min-width: 0;
+  max-width: 100%;
   padding: 24px;
   background: var(--surface);
+  overflow: hidden;
 }
 
 .event-card-featured .event-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-left: 1px solid var(--line);
   background: #09090b;
+  padding: clamp(28px, 4vw, 54px);
+}
+
+.event-card-featured h3 {
+  font-size: clamp(56px, 8vw, 118px);
+  text-transform: uppercase;
+}
+
+.event-card-featured p {
+  max-width: 520px;
+  font-size: clamp(18px, 2vw, 24px);
+}
+
+.event-card-featured .compact-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  width: min(620px, 100%);
+  margin-top: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.event-card-featured .compact-facts div {
+  padding: 18px;
+  border-top: 0;
+  background: #0d0d10;
+}
+
+.event-card-featured .card-actions {
+  margin-top: 32px;
 }
 
 .event-card-body h3 a {
@@ -343,6 +386,8 @@ dd {
 }
 
 .event-card-planning {
+  grid-column: 1 / -1;
+  grid-template-columns: 1fr;
   background: #050505;
 }
 
@@ -659,14 +704,21 @@ dd {
   .event-grid,
   .split-section,
   .event-layout,
-  .event-card-featured,
   .archive-edition {
+    grid-template-columns: 1fr;
+  }
+
+  .event-card-featured {
     grid-template-columns: 1fr;
   }
 
   .event-card-featured .event-card-body {
     border-left: 0;
     border-top: 1px solid var(--line);
+  }
+
+  .event-card-featured .compact-facts {
+    grid-template-columns: 1fr;
   }
 
   .event-metadata {
