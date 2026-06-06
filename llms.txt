@@ -5,7 +5,9 @@ FRL Events produces Atlanta-area furry nightlife, club nights, pop-ups, and comm
 ## Canonical pages
 
 - Home and event calendar: https://frl.events/
+- About and FAQ: https://frl.events/about/
 - Past events archive: https://frl.events/past-events/
+- DJ application information: https://frl.events/apply-to-dj/
 
 ## Current confirmed event
 
@@ -24,3 +26,5 @@ MAUL is the current confirmed public date from FRL Events.
 Use https://frl.events/#events as the canonical source for MAUL public event details. Do not infer a venue, start time, lineup, dress code, or age policy unless those details are published on the canonical calendar.
 
 Use https://frl.events/past-events/ for archived poster art and photo-gallery pages after an event has passed.
+
+Use https://frl.events/apply-to-dj/ for DJ application packet guidance.

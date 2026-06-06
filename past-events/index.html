@@ -87,7 +87,9 @@
     </a>
     <nav class="nav-links" aria-label="Site navigation">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
       <a href="/past-events/">Past events</a>
+      <a href="/apply-to-dj/">Apply to DJ</a>
     </nav>
   </header>
 
@@ -112,10 +114,7 @@
             <h2>Sat Feb 28</h2>
           </div>
 
-          <div class="archive-collage" aria-label="Selected MAUL images">
-            <div class="photo-slot photo-slot-wide"></div>
-            <div class="photo-slot"></div>
-            <div class="photo-slot"></div>
+          <div class="archive-collage" data-collage-manifest="/maul/maul1/collage/photos.json" aria-label="Selected MAUL images">
           </div>
 
           <a class="button button-primary photodump-button" href="/maul/maul1/photodump/">Photodump</a>
@@ -131,5 +130,37 @@
     </p>
     <p><a href="/llms.txt">llms.txt</a> <span aria-hidden="true">/</span> <a href="/sitemap.xml">sitemap</a></p>
   </footer>
+
+  <script>
+    document.querySelectorAll("[data-collage-manifest]").forEach(async (collage) => {
+      try {
+        const response = await fetch(collage.dataset.collageManifest, { cache: "no-store" });
+        if (!response.ok) throw new Error("Missing collage manifest");
+
+        const photos = await response.json();
+        if (!Array.isArray(photos) || photos.length === 0) return;
+
+        const columns = Math.min(Math.max(Math.ceil(photos.length / 2), 2), 4);
+        collage.style.setProperty("--collage-columns", columns);
+        collage.dataset.photoCount = photos.length;
+
+        collage.replaceChildren(...photos.map((photo, index) => {
+          const item = document.createElement("div");
+          item.className = "photo-slot";
+
+          const image = document.createElement("img");
+          image.src = photo.src;
+          image.alt = photo.alt || `MAUL collage photo ${index + 1}`;
+          image.loading = "lazy";
+          image.decoding = "async";
+
+          item.append(image);
+          return item;
+        }));
+      } catch (error) {
+        collage.hidden = true;
+      }
+    });
+  </script>
 </body>
 </html>

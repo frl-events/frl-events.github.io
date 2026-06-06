@@ -22,7 +22,9 @@
     </a>
     <nav class="nav-links" aria-label="Site navigation">
       <a href="/">Home</a>
+      <a href="/about/">About</a>
       <a href="/past-events/">Past events</a>
+      <a href="/apply-to-dj/">Apply to DJ</a>
     </nav>
   </header>
 
@@ -36,11 +38,21 @@
     </section>
 
     <section class="section photodump-section" id="photos" aria-label="MAUL photo collage">
-      <div class="photodump-empty">
+      <div class="photodump-grid" data-photo-manifest="photos.json"></div>
+      <div class="photodump-empty" hidden>
         <p>Photos have not been posted yet.</p>
       </div>
     </section>
   </main>
+
+  <div class="photo-viewer" data-photo-viewer hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="viewer-button viewer-close" type="button" data-viewer-close aria-label="Close photo viewer">X</button>
+    <button class="viewer-button viewer-prev" type="button" data-viewer-prev aria-label="Previous photo">‹</button>
+    <figure class="viewer-frame">
+      <img data-viewer-image alt="" />
+    </figure>
+    <button class="viewer-button viewer-next" type="button" data-viewer-next aria-label="Next photo">›</button>
+  </div>
 
   <footer class="site-footer">
     <p class="footer-brand">
@@ -49,5 +61,89 @@
     </p>
     <p><a href="/llms.txt">llms.txt</a> <span aria-hidden="true">/</span> <a href="/sitemap.xml">sitemap</a></p>
   </footer>
+
+  <script>
+    const grid = document.querySelector("[data-photo-manifest]");
+    const empty = document.querySelector(".photodump-empty");
+    const viewer = document.querySelector("[data-photo-viewer]");
+    const viewerImage = document.querySelector("[data-viewer-image]");
+    const closeButton = document.querySelector("[data-viewer-close]");
+    const previousButton = document.querySelector("[data-viewer-prev]");
+    const nextButton = document.querySelector("[data-viewer-next]");
+    let galleryPhotos = [];
+    let activePhotoIndex = 0;
+
+    function showPhoto(index) {
+      if (!galleryPhotos.length) return;
+      activePhotoIndex = (index + galleryPhotos.length) % galleryPhotos.length;
+      const photo = galleryPhotos[activePhotoIndex];
+      viewerImage.src = photo.src;
+      viewerImage.alt = photo.alt || "";
+    }
+
+    function openViewer(index) {
+      showPhoto(index);
+      viewer.hidden = false;
+      document.body.classList.add("viewer-open");
+      closeButton.focus();
+    }
+
+    function closeViewer() {
+      viewer.hidden = true;
+      document.body.classList.remove("viewer-open");
+      viewerImage.removeAttribute("src");
+      grid.querySelector(`[data-photo-index="${activePhotoIndex}"]`)?.focus();
+    }
+
+    previousButton.addEventListener("click", () => showPhoto(activePhotoIndex - 1));
+    nextButton.addEventListener("click", () => showPhoto(activePhotoIndex + 1));
+    closeButton.addEventListener("click", closeViewer);
+    viewer.addEventListener("click", (event) => {
+      if (event.target === viewer) closeViewer();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (viewer.hidden) return;
+      if (event.key === "Escape") closeViewer();
+      if (event.key === "ArrowLeft") showPhoto(activePhotoIndex - 1);
+      if (event.key === "ArrowRight") showPhoto(activePhotoIndex + 1);
+    });
+
+    async function loadPhotodump() {
+      try {
+        const response = await fetch(grid.dataset.photoManifest, { cache: "no-store" });
+        if (!response.ok) throw new Error("Missing photo manifest");
+
+        const photos = await response.json();
+        if (!Array.isArray(photos) || photos.length === 0) {
+          empty.hidden = false;
+          return;
+        }
+        galleryPhotos = photos;
+
+        grid.replaceChildren(...photos.map((photo, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "photodump-link";
+          button.dataset.photoIndex = index;
+          button.setAttribute("aria-label", photo.alt || `MAUL photodump photo ${index + 1}`);
+          button.addEventListener("click", () => openViewer(index));
+
+          const image = document.createElement("img");
+          image.src = photo.src;
+          image.alt = photo.alt || "";
+          image.loading = index < 8 ? "eager" : "lazy";
+          image.decoding = "async";
+
+          button.append(image);
+          return button;
+        }));
+      } catch (error) {
+        empty.hidden = false;
+      }
+    }
+
+    loadPhotodump();
+  </script>
 </body>
 </html>
