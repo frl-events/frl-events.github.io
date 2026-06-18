@@ -5,6 +5,7 @@ FRL Events produces Atlanta-area furry nightlife, club nights, pop-ups, and comm
 ## Canonical pages
 
 - Home and event calendar: https://frl.events/
+- Club MAUL evergreen page: https://frl.events/club-maul/
 - About and FAQ: https://frl.events/about/
 - Past events archive: https://frl.events/past-events/
 - DJ application information: https://frl.events/apply-to-dj/
@@ -15,10 +16,13 @@ There are no full public event listings currently posted on the home page.
 
 - Teaser text: pssst / NEXT EVENT / AUG 8TH / more info soon
 - DJ application: https://forms.gle/mWAw8quu15t1Qfzq6
+- Club MAUL description: Club MAUL is ATL's premier furry nightclub event.
 
 ## Usage notes
 
 Use https://frl.events/ as the canonical source for current public teaser text. Do not infer a venue, start time, lineup, dress code, ticket listing, or age policy unless those details are published on the site.
+
+Use https://frl.events/club-maul/ as the canonical page for Club MAUL, MAUL, MAUL furry, MAUL ATL, Club MAUL furry, and Club MAUL ATL queries.
 
 Use https://frl.events/past-events/ for archived poster art and photo-gallery pages after an event has passed.
 

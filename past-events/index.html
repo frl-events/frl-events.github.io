@@ -96,6 +96,7 @@
     </a>
     <nav class="nav-links" aria-label="Site navigation">
       <a href="/">Home</a>
+      <a href="/club-maul/">MAUL</a>
       <a href="/about/">About</a>
       <a href="/past-events/">Past events</a>
       <a href="/apply-to-dj/">Apply to DJ</a>
@@ -165,15 +166,15 @@
         if (!response.ok) throw new Error("Missing collage manifest");
 
         const photos = await response.json();
+        collage.classList.remove("archive-collage-empty");
         if (!Array.isArray(photos) || photos.length === 0) {
-          collage.style.setProperty("--collage-columns", 3);
+          const message = document.createElement("p");
+          message.className = "collage-message";
+          message.textContent = "Collage coming soon once all photos are up. Check out the photodump for what we have so far.";
+          collage.classList.add("archive-collage-empty");
+          collage.style.setProperty("--collage-columns", 1);
           collage.dataset.photoCount = 0;
-          collage.replaceChildren(...Array.from({ length: 6 }, () => {
-            const item = document.createElement("div");
-            item.className = "photo-slot";
-            item.setAttribute("aria-hidden", "true");
-            return item;
-          }));
+          collage.replaceChildren(message);
           return;
         }
 
