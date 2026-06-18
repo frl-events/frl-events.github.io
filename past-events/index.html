@@ -57,6 +57,15 @@
         }
       },
       {
+        "@type": "ImageObject",
+        "@id": "https://frl.events/past-events/#maul-2-archived-poster",
+        "name": "Archived MAUL 2 poster artwork",
+        "contentUrl": "https://frl.events/maul/maul2/poster.png",
+        "creator": {
+          "@id": "https://frl.events/#organization"
+        }
+      },
+      {
         "@type": "BreadcrumbList",
         "@id": "https://frl.events/past-events/#breadcrumb",
         "itemListElement": [
@@ -104,6 +113,24 @@
 
     <section class="section archive-list" id="archive" aria-label="Past event archive">
       <article class="archive-edition">
+        <a class="archive-poster" href="/maul/maul2/poster.png" aria-label="Open MAUL 2 poster">
+          <img src="/maul/maul2/poster.png" alt="MAUL 2 poster artwork for Saturday, June 13" loading="eager" />
+        </a>
+
+        <div class="archive-details">
+          <div class="archive-date">
+            <p class="status-label">Date</p>
+            <h2>Sat Jun 13</h2>
+          </div>
+
+          <div class="archive-collage" data-collage-manifest="/maul/maul2/collage/photos.json" aria-label="Selected MAUL 2 images">
+          </div>
+
+          <a class="button button-primary photodump-button" href="/maul/maul2/photodump/">Photodump</a>
+        </div>
+      </article>
+
+      <article class="archive-edition">
         <a class="archive-poster" href="/maul/maul1/poster.png" aria-label="Open MAUL poster">
           <img src="/maul/maul1/poster.png" alt="MAUL poster artwork for Saturday, February 28" loading="eager" />
         </a>
@@ -138,7 +165,17 @@
         if (!response.ok) throw new Error("Missing collage manifest");
 
         const photos = await response.json();
-        if (!Array.isArray(photos) || photos.length === 0) return;
+        if (!Array.isArray(photos) || photos.length === 0) {
+          collage.style.setProperty("--collage-columns", 3);
+          collage.dataset.photoCount = 0;
+          collage.replaceChildren(...Array.from({ length: 6 }, () => {
+            const item = document.createElement("div");
+            item.className = "photo-slot";
+            item.setAttribute("aria-hidden", "true");
+            return item;
+          }));
+          return;
+        }
 
         const columns = Math.min(Math.max(Math.ceil(photos.length / 2), 2), 4);
         collage.style.setProperty("--collage-columns", columns);

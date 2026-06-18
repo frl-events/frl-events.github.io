@@ -85,6 +85,11 @@ a:hover {
   border-top: 1px solid var(--line);
 }
 
+.dormant-home main {
+  min-height: calc(100svh - 88px);
+  display: grid;
+}
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -208,6 +213,44 @@ h3 {
   flex-wrap: wrap;
   gap: 12px;
   margin: 28px 0 0;
+}
+
+.next-event-signal {
+  min-height: clamp(520px, 72svh, 760px);
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.teaser-stack {
+  display: grid;
+  gap: clamp(8px, 1.8vw, 18px);
+  justify-items: center;
+}
+
+.teaser-stack p,
+.teaser-stack h1 {
+  margin: 0;
+}
+
+.teaser-stack p {
+  color: var(--muted);
+  font-size: clamp(18px, 3vw, 34px);
+  font-weight: 750;
+}
+
+.teaser-stack h1 {
+  max-width: none;
+  font-size: clamp(52px, 9vw, 126px);
+  text-transform: uppercase;
+}
+
+.teaser-date {
+  color: var(--ink) !important;
+  font-size: clamp(52px, 9vw, 126px) !important;
+  font-weight: 900 !important;
+  line-height: .92;
+  text-transform: uppercase;
 }
 
 .button {
@@ -564,6 +607,8 @@ dd {
 }
 
 .archive-list {
+  display: grid;
+  gap: 24px;
   padding-top: 0;
 }
 
@@ -804,6 +849,13 @@ dd {
 .photodump-empty p {
   margin: 0;
   font-size: 18px;
+}
+
+.photodump-note {
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  text-align: center;
 }
 
 .info-page {

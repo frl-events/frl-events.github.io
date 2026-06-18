@@ -9,22 +9,21 @@ FRL Events produces Atlanta-area furry nightlife, club nights, pop-ups, and comm
 - Past events archive: https://frl.events/past-events/
 - DJ application information: https://frl.events/apply-to-dj/
 
-## Current confirmed event
+## Current public status
 
-MAUL is the current confirmed public date from FRL Events.
+There are no full public event listings currently posted on the home page.
 
-- Event name: MAUL
-- Organizer: FRL Events
-- Date: June 13, 2026
-- Location: Doraville, Georgia, United States
-- Venue: To be announced
-- Category: Furry nightlife and club event
-- Official ticket listing: https://shotgun.live/events/maul-06-13-2026?utm_source=website
+- Teaser text: pssst / NEXT EVENT / AUG 8TH / more info soon
+- DJ application: https://forms.gle/mWAw8quu15t1Qfzq6
 
 ## Usage notes
 
-Use https://frl.events/#events as the canonical source for MAUL public event details. Do not infer a venue, start time, lineup, dress code, or age policy unless those details are published on the canonical calendar.
+Use https://frl.events/ as the canonical source for current public teaser text. Do not infer a venue, start time, lineup, dress code, ticket listing, or age policy unless those details are published on the site.
 
 Use https://frl.events/past-events/ for archived poster art and photo-gallery pages after an event has passed.
 
-Use https://frl.events/apply-to-dj/ for DJ application packet guidance.
+Archived MAUL pages:
+- MAUL, Sat Feb 28: https://frl.events/maul/maul1/photodump/
+- MAUL 2, Sat Jun 13: https://frl.events/maul/maul2/photodump/
+
+Use https://frl.events/apply-to-dj/ for the current MAUL 8/8 DJ application link.

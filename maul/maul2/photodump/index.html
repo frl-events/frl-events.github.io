@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAUL 2 Photodump | Sat Jun 13 | FRL Events</title>
+  <meta name="description" content="Photo collage for MAUL 2 on Saturday, June 13." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#09090b" />
+  <link rel="canonical" href="https://frl.events/maul/maul2/photodump/" />
+  <link rel="icon" type="image/png" href="/assets/frl-claws-circle-white.png" />
+  <link rel="apple-touch-icon" href="/assets/frl-claws-circle-white.png" />
+  <link rel="preload" as="image" href="/assets/frl-logo-white.png" />
+  <link rel="stylesheet" href="/site.css" />
+</head>
+<body class="archive-page photodump-page">
+  <a class="skip-link" href="#photos">Skip to photos</a>
+
+  <header class="site-header" aria-label="Primary">
+    <a class="brand" href="/" aria-label="FRL Events home">
+      <img class="brand-logo" src="/assets/frl-logo-white.png" alt="FRL Events" />
+    </a>
+    <nav class="nav-links" aria-label="Site navigation">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/past-events/">Past events</a>
+      <a href="/apply-to-dj/">Apply to DJ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section archive-intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Photodump</p>
+        <h1 id="page-title">Sat Jun 13</h1>
+        <p class="lead">MAUL 2 photos.</p>
+      </div>
+    </section>
+
+    <section class="section photodump-section" id="photos" aria-label="MAUL 2 photo collage">
+      <div class="photodump-grid" data-photo-manifest="photos.json"></div>
+      <div class="photodump-empty" hidden>
+        <p>Additional photos coming shortly.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="photo-viewer" data-photo-viewer hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="viewer-button viewer-close" type="button" data-viewer-close aria-label="Close photo viewer">X</button>
+    <button class="viewer-button viewer-prev" type="button" data-viewer-prev aria-label="Previous photo">&lsaquo;</button>
+    <figure class="viewer-frame">
+      <img data-viewer-image alt="" />
+    </figure>
+    <button class="viewer-button viewer-next" type="button" data-viewer-next aria-label="Next photo">&rsaquo;</button>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-brand">
+      <img src="/assets/frl-claws-circle-white.png" alt="" aria-hidden="true" loading="lazy" />
+      <a href="/">FRL Events</a>
+    </p>
+    <p><a href="/llms.txt">llms.txt</a> <span aria-hidden="true">/</span> <a href="/sitemap.xml">sitemap</a></p>
+  </footer>
+
+  <script>
+    const grid = document.querySelector("[data-photo-manifest]");
+    const empty = document.querySelector(".photodump-empty");
+    const viewer = document.querySelector("[data-photo-viewer]");
+    const viewerImage = document.querySelector("[data-viewer-image]");
+    const closeButton = document.querySelector("[data-viewer-close]");
+    const previousButton = document.querySelector("[data-viewer-prev]");
+    const nextButton = document.querySelector("[data-viewer-next]");
+    let galleryPhotos = [];
+    let activePhotoIndex = 0;
+
+    function showPhoto(index) {
+      if (!galleryPhotos.length) return;
+      activePhotoIndex = (index + galleryPhotos.length) % galleryPhotos.length;
+      const photo = galleryPhotos[activePhotoIndex];
+      viewerImage.src = photo.src;
+      viewerImage.alt = photo.alt || "";
+    }
+
+    function openViewer(index) {
+      showPhoto(index);
+      viewer.hidden = false;
+      document.body.classList.add("viewer-open");
+      closeButton.focus();
+    }
+
+    function closeViewer() {
+      viewer.hidden = true;
+      document.body.classList.remove("viewer-open");
+      viewerImage.removeAttribute("src");
+      grid.querySelector(`[data-photo-index="${activePhotoIndex}"]`)?.focus();
+    }
+
+    previousButton.addEventListener("click", () => showPhoto(activePhotoIndex - 1));
+    nextButton.addEventListener("click", () => showPhoto(activePhotoIndex + 1));
+    closeButton.addEventListener("click", closeViewer);
+    viewer.addEventListener("click", (event) => {
+      if (event.target === viewer) closeViewer();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (viewer.hidden) return;
+      if (event.key === "Escape") closeViewer();
+      if (event.key === "ArrowLeft") showPhoto(activePhotoIndex - 1);
+      if (event.key === "ArrowRight") showPhoto(activePhotoIndex + 1);
+    });
+
+    async function loadPhotodump() {
+      try {
+        const response = await fetch(grid.dataset.photoManifest, { cache: "no-store" });
+        if (!response.ok) throw new Error("Missing photo manifest");
+
+        const photos = await response.json();
+        if (!Array.isArray(photos) || photos.length === 0) {
+          empty.hidden = false;
+          return;
+        }
+        galleryPhotos = photos;
+
+        grid.replaceChildren(...photos.map((photo, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "photodump-link";
+          button.dataset.photoIndex = index;
+          button.setAttribute("aria-label", photo.alt || `MAUL 2 photodump photo ${index + 1}`);
+          button.addEventListener("click", () => openViewer(index));
+
+          const image = document.createElement("img");
+          image.src = photo.src;
+          image.alt = photo.alt || "";
+          image.loading = index < 8 ? "eager" : "lazy";
+          image.decoding = "async";
+
+          button.append(image);
+          return button;
+        }));
+      } catch (error) {
+        empty.hidden = false;
+      }
+    }
+
+    loadPhotodump();
+  </script>
+</body>
+</html>
