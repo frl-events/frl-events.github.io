@@ -40,9 +40,6 @@
 
     <section class="section photodump-section" id="photos" aria-label="MAUL 2 photo collage">
       <div class="photodump-grid" data-photo-manifest="photos.json"></div>
-      <div class="photodump-empty" hidden>
-        <p>Additional photos coming shortly.</p>
-      </div>
     </section>
   </main>
 
@@ -65,7 +62,6 @@
 
   <script>
     const grid = document.querySelector("[data-photo-manifest]");
-    const empty = document.querySelector(".photodump-empty");
     const viewer = document.querySelector("[data-photo-viewer]");
     const viewerImage = document.querySelector("[data-viewer-image]");
     const closeButton = document.querySelector("[data-viewer-close]");
@@ -117,7 +113,6 @@
 
         const photos = await response.json();
         if (!Array.isArray(photos) || photos.length === 0) {
-          empty.hidden = false;
           return;
         }
         galleryPhotos = photos;
@@ -140,7 +135,7 @@
           return button;
         }));
       } catch (error) {
-        empty.hidden = false;
+        grid.replaceChildren();
       }
     }
 
