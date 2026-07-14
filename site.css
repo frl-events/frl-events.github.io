@@ -571,6 +571,28 @@ dd {
   object-fit: contain;
 }
 
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.footer-links a {
+  color: var(--muted);
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-links a + a::before {
+  content: "/";
+  margin-right: 14px;
+  color: var(--dim);
+}
+
 .event-page {
   background: #0a0a0c;
 }
@@ -1057,6 +1079,10 @@ dd {
   .site-footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
   }
 }
 

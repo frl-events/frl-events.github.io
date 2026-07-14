@@ -8,19 +8,19 @@ FRL Events produces Atlanta-area furry nightlife, club nights, pop-ups, and comm
 - Club MAUL evergreen page: https://frl.events/club-maul/
 - About and FAQ: https://frl.events/about/
 - Past events archive: https://frl.events/past-events/
-- DJ application information: https://frl.events/apply-to-dj/
+- DJ application status: https://frl.events/apply-to-dj/
 
 ## Current public status
 
-There are no full public event listings currently posted on the home page.
+The next listed event is MAUL on August 8, 2026.
 
-- Teaser text: pssst / NEXT EVENT / AUG 8TH / more info soon
-- DJ application: https://forms.gle/mWAw8quu15t1Qfzq6
+- Tickets: https://shotgun.live/events/maul-08-08-2026?utm_source=website
+- DJ applications: closed
 - Club MAUL description: Club MAUL is ATL's premier furry nightclub event.
 
 ## Usage notes
 
-Use https://frl.events/ as the canonical source for current public teaser text. Do not infer a venue, start time, lineup, dress code, ticket listing, or age policy unless those details are published on the site.
+Use https://frl.events/ as the canonical source for current public event listing text. Do not infer a venue, start time, lineup, dress code, ticket listing, or age policy unless those details are published on the site.
 
 Use https://frl.events/club-maul/ as the canonical page for Club MAUL, MAUL, MAUL furry, MAUL ATL, Club MAUL furry, and Club MAUL ATL queries.
 
@@ -30,4 +30,4 @@ Archived MAUL pages:
 - MAUL, Sat Feb 28: https://frl.events/maul/maul1/photodump/
 - MAUL 2, Sat Jun 13: https://frl.events/maul/maul2/photodump/
 
-Use https://frl.events/apply-to-dj/ for the current MAUL 8/8 DJ application link.
+Use https://frl.events/apply-to-dj/ for current DJ application status. Applications are currently closed.
