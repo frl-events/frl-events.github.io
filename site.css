@@ -629,8 +629,10 @@ dd {
   bottom: max(18px, env(safe-area-inset-bottom));
   z-index: 2;
   transform: translateX(-50%);
+  width: min(280px, calc(100vw - 32px));
   box-shadow: 0 14px 34px rgba(0, 0, 0, .48);
-  white-space: nowrap;
+  text-align: center;
+  white-space: normal;
 }
 
 .event-layout {
