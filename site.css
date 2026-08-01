@@ -597,6 +597,38 @@ dd {
   background: #0a0a0c;
 }
 
+.iglink-page {
+  min-height: 100svh;
+  background: #050505;
+  overflow: hidden;
+}
+
+.iglink-screen {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 2vw, 20px);
+}
+
+.iglink-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.iglink-button {
+  position: fixed;
+  left: 50%;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 2;
+  transform: translateX(-50%);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .48);
+  white-space: nowrap;
+}
+
 .event-layout {
   display: grid;
   grid-template-columns: minmax(270px, .72fr) minmax(0, 1fr);
