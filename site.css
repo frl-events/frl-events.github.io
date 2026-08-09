@@ -424,6 +424,17 @@ dd {
   text-transform: uppercase;
 }
 
+.event-card-featured .stacked-event-title {
+  font-size: clamp(52px, 7.4vw, 108px);
+}
+
+.stacked-event-title span {
+  display: block;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
 .event-card-featured p {
   max-width: 520px;
   font-size: clamp(18px, 2vw, 24px);
