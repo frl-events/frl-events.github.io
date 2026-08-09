@@ -635,6 +635,27 @@ dd {
   white-space: normal;
 }
 
+.iglink-poster-stage {
+  position: relative;
+  width: min(100vw, calc(100svh * 17 / 22));
+  height: min(100svh, calc(100vw * 22 / 17));
+}
+
+.iglink-poster-stage .iglink-poster {
+  width: 100%;
+  height: 100%;
+}
+
+.iglink-poster-stage .iglink-button {
+  position: absolute;
+  top: 70%;
+  bottom: auto;
+  width: min(280px, calc(100% - 32px));
+  transform: translate(-50%, -50%);
+  background: rgba(226, 61, 55, .76);
+  backdrop-filter: blur(4px);
+}
+
 .event-layout {
   display: grid;
   grid-template-columns: minmax(270px, .72fr) minmax(0, 1fr);
@@ -742,6 +763,16 @@ dd {
 .photodump-button {
   align-self: flex-start;
   margin-top: 24px;
+}
+
+.photodump-button-disabled {
+  cursor: default;
+  opacity: .72;
+}
+
+.photodump-button-disabled:hover {
+  background: var(--red);
+  color: white;
 }
 
 .archive-collage {

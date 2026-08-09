@@ -1,6 +1,6 @@
 # FRL Events
 
-FRL Events produces Atlanta-area furry nightlife, club nights, pop-ups, and community events.
+FRL Events produces Atlanta queer, alt, and furry nightlife, club nights, pop-ups, and community events.
 
 ## Canonical pages
 
@@ -12,9 +12,11 @@ FRL Events produces Atlanta-area furry nightlife, club nights, pop-ups, and comm
 
 ## Current public status
 
-The next listed event is MAUL on August 8, 2026.
+The next listed event is Internet Animal on September 12, 2026 at 585 Wells St, Atlanta.
 
-- Tickets: https://shotgun.live/events/maul-08-08-2026?utm_source=website
+- Event page: https://frl.events/
+- Tickets: https://shotgun.live/events/internet-animal-09-12-26?utm_source=website
+- Details: 9 PM. 18+ entry / 21+ to drink. Happy hardcore, gabber, hyperpop, techno.
 - DJ applications: closed
 - Club MAUL description: Club MAUL is ATL's premier furry nightclub event.
 
@@ -29,5 +31,6 @@ Use https://frl.events/past-events/ for archived poster art and photo-gallery pa
 Archived MAUL pages:
 - MAUL, Sat Feb 28: https://frl.events/maul/maul1/photodump/
 - MAUL 2, Sat Jun 13: https://frl.events/maul/maul2/photodump/
+- MAUL 3, Sat Aug 8: photodump coming soon
 
 Use https://frl.events/apply-to-dj/ for current DJ application status. Applications are currently closed.
