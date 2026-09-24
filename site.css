@@ -368,6 +368,11 @@ dd {
   align-items: stretch;
 }
 
+.event-stack {
+  display: grid;
+  gap: 18px;
+}
+
 .event-card {
   display: grid;
   min-height: 100%;
@@ -381,6 +386,46 @@ dd {
   grid-column: 1 / -1;
   grid-template-columns: minmax(360px, .9fr) minmax(0, 1fr);
   background: #050505;
+}
+
+.event-card-announcement {
+  grid-template-columns: 1fr;
+  min-height: clamp(320px, 43svh, 470px);
+  border-color: rgba(244, 240, 232, .24);
+}
+
+.event-card-featured.event-card-announcement .event-card-body {
+  border-top: 8px solid var(--red);
+  border-left: 0;
+}
+
+.event-card-announcement h2 {
+  max-width: none;
+  font-size: clamp(52px, 8.5vw, 104px);
+  text-transform: uppercase;
+}
+
+.event-card-secondary {
+  width: 100%;
+  justify-self: stretch;
+}
+
+.event-card-secondary .event-card-body {
+  display: grid;
+  min-height: 190px;
+  align-content: center;
+  padding: clamp(24px, 3vw, 38px);
+  border-top: 8px solid var(--teal);
+  background: var(--surface);
+}
+
+.event-card-secondary h3 {
+  font-size: clamp(38px, 5vw, 60px);
+  text-transform: uppercase;
+}
+
+.event-card-secondary p {
+  margin-bottom: 0;
 }
 
 .event-card-image {
@@ -416,7 +461,7 @@ dd {
   justify-content: center;
   border-left: 1px solid var(--line);
   background: #09090b;
-  padding: clamp(28px, 4vw, 54px);
+  padding: clamp(24px, 3vw, 40px);
 }
 
 .event-card-featured h3 {
@@ -437,23 +482,25 @@ dd {
 
 .event-card-featured p {
   max-width: 520px;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(16px, 1.5vw, 20px);
 }
 
-.event-card-featured .compact-facts {
+.event-card-featured .compact-facts,
+.event-card-secondary .compact-facts {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1px;
-  width: min(620px, 100%);
-  margin-top: 34px;
+  width: min(360px, 100%);
+  margin-top: 22px;
   border: 1px solid var(--line);
   border-radius: 8px;
   overflow: hidden;
   background: var(--line);
 }
 
-.event-card-featured .compact-facts div {
-  padding: 18px;
+.event-card-featured .compact-facts div,
+.event-card-secondary .compact-facts div {
+  padding: 14px 16px;
   border-top: 0;
   background: #0d0d10;
 }
@@ -1069,6 +1116,10 @@ dd {
 
   .event-card-featured {
     grid-template-columns: 1fr;
+  }
+
+  .event-card-secondary {
+    width: 100%;
   }
 
   .event-card-planning {
