@@ -389,14 +389,15 @@ dd {
 }
 
 .event-card-announcement {
-  grid-template-columns: 1fr;
-  min-height: clamp(320px, 43svh, 470px);
+  grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+  min-height: 0;
   border-color: rgba(244, 240, 232, .24);
+  border-top: 8px solid var(--red);
 }
 
 .event-card-featured.event-card-announcement .event-card-body {
-  border-top: 8px solid var(--red);
-  border-left: 0;
+  border-top: 0;
+  border-left: 1px solid var(--line);
 }
 
 .event-card-announcement h2 {
@@ -408,6 +409,7 @@ dd {
 .event-card-secondary {
   width: 100%;
   justify-self: stretch;
+  border-top: 8px solid var(--teal);
 }
 
 .event-card-secondary .event-card-body {
@@ -415,7 +417,7 @@ dd {
   min-height: 190px;
   align-content: center;
   padding: clamp(24px, 3vw, 38px);
-  border-top: 8px solid var(--teal);
+  border-top: 0;
   background: var(--surface);
 }
 
@@ -467,6 +469,15 @@ dd {
 .event-card-featured h3 {
   font-size: clamp(56px, 8vw, 118px);
   text-transform: uppercase;
+}
+
+.event-card-announcement .event-card-image {
+  min-height: 0;
+  padding: 14px;
+}
+
+.event-card-announcement .event-card-image img {
+  aspect-ratio: 4 / 5;
 }
 
 .event-card-featured .stacked-event-title {
@@ -627,6 +638,11 @@ dd {
   width: 28px;
   height: 28px;
   object-fit: contain;
+}
+
+.event-card-announcement .compact-facts {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(620px, 100%);
 }
 
 .footer-links {
