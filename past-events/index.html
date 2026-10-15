@@ -49,6 +49,15 @@
       },
       {
         "@type": "ImageObject",
+        "@id": "https://frl.events/past-events/#peach-fuzz-archived-poster",
+        "name": "Archived Peach Fuzz poster artwork",
+        "contentUrl": "https://frl.events/peachfuzz/peachfuzz1/poster.png",
+        "creator": {
+          "@id": "https://frl.events/#organization"
+        }
+      },
+      {
+        "@type": "ImageObject",
         "@id": "https://frl.events/past-events/#internet-animal-archived-poster",
         "name": "Archived Internet Animal poster artwork",
         "contentUrl": "https://frl.events/internetanimal/internetanimal1/poster.png",
@@ -132,6 +141,20 @@
 
     <section class="section archive-list" id="archive" aria-label="Past event archive">
       <article class="archive-edition">
+        <a class="archive-poster" href="/peachfuzz/peachfuzz1/poster.png" aria-label="Open Peach Fuzz poster">
+          <img src="/peachfuzz/peachfuzz1/poster.png" alt="Peach Fuzz poster artwork for Saturday, October 10" loading="eager" />
+        </a>
+
+        <div class="archive-details">
+          <div class="archive-date">
+            <p class="status-label">Date</p>
+            <h2>Sat Oct 10</h2>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="archive-edition">
         <a class="archive-poster" href="/internetanimal/internetanimal1/poster.png" aria-label="Open Internet Animal poster">
           <img src="/internetanimal/internetanimal1/poster.png" alt="Internet Animal poster artwork for Saturday, September 12" loading="eager" />
         </a>
@@ -157,7 +180,10 @@
             <h2>Sat Aug 8</h2>
           </div>
 
-          <p class="button button-primary photodump-button photodump-button-disabled" aria-disabled="true">Photodump coming soon</p>
+          <div class="archive-collage" data-collage-manifest="/maul/maul3/collage/photos.json" aria-label="Selected MAUL 3 images">
+          </div>
+
+          <a class="button button-primary photodump-button" href="/maul/maul3/photodump/">Photodump</a>
         </div>
       </article>
 

@@ -12,11 +12,11 @@ FRL Events produces Atlanta queer, alt, and furry nightlife, club nights, pop-up
 
 ## Current public status
 
-The next listed event is Peach Fuzz, an Atlanta Pride kinky afterparty, on October 10, 2026 from 10 PM to 3 AM. It is 21+ at a secret location. MAUL follows on November 14, 2026, with more information coming soon.
+The next listed event is Club MAUL on November 14, 2026 at 5150 Buford Hwy NE in Doraville, Georgia. Doors open at 8:30 PM and DJs begin at 9 PM. The event is 21+ and features VDL, USBEAN, Jay Foxcat, and DJ Melon.
 
 - Event calendar: https://frl.events/
-- Peach Fuzz tickets: https://shotgun.live/events/peach-fuzz-10102026?utm_source=website
-- DJ applications: closed
+- MAUL tickets: https://shotgun.live/events/maul-11142026?utm_source=website
+- DJ applications: open for MAUL on November 14
 - Club MAUL description: Club MAUL is ATL's premier furry nightclub event.
 
 ## Usage notes
@@ -30,9 +30,12 @@ Use https://frl.events/past-events/ for archived poster art and photo-gallery pa
 Archived MAUL pages:
 - MAUL, Sat Feb 28: https://frl.events/maul/maul1/photodump/
 - MAUL 2, Sat Jun 13: https://frl.events/maul/maul2/photodump/
-- MAUL 3, Sat Aug 8: photodump coming soon
+- MAUL 3, Sat Aug 8: https://frl.events/maul/maul3/photodump/
 
 Archived Internet Animal events:
 - Internet Animal, Sat Sep 12: photodump coming soon
 
-Use https://frl.events/apply-to-dj/ for current DJ application status. Applications are currently closed.
+Archived Peach Fuzz events:
+- Peach Fuzz, Sat Oct 10: poster only; no photodump planned
+
+Use https://frl.events/apply-to-dj/ for current DJ application status. Applications are open for MAUL on November 14.
