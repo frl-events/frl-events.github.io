@@ -1,6 +1,6 @@
 # FRL Events
 
-FRL Events produces Atlanta queer, alt, and furry nightlife, club nights, pop-ups, and community events.
+FRL Events is an Atlanta nightlife collective putting on queer, alt, and furry club nights, pop-ups, and community events.
 
 ## Canonical pages
 
@@ -15,8 +15,11 @@ FRL Events produces Atlanta queer, alt, and furry nightlife, club nights, pop-up
 
 The next listed event is Club MAUL on November 14, 2026 at 5150 Buford Hwy NE in Doraville, Georgia. Doors open at 8:30 PM and DJs begin at 9 PM. The event is 21+ and features VDL, USBEAN, Jay Foxcat, and DJ Melon.
 
+Internet Animal follows on December 12, 2026, from 9 PM to 2 AM at a secret warehouse in ATL. It is 18+ and features ONSRA, JAGU4R, WEIRD, SAURON, and vendors. See https://frl.events/#internet-animal for event details and tickets.
+
 - Event calendar: https://frl.events/
 - MAUL tickets: https://shotgun.live/events/maul-11142026?utm_source=website
+- Internet Animal tickets: https://shotgun.live/events/internetanimal-121226?utm_source=website
 - DJ applications: open for MAUL on November 14
 - Club MAUL description: Club MAUL is ATL's premier furry nightclub event.
 - Volunteer opportunities: setup and teardown help through the Club MAUL volunteer/community access program. Learn more and apply to join the eligible volunteer pool at https://frl.events/volunteer-with-us/.
