@@ -749,6 +749,13 @@ dd {
   backdrop-filter: blur(4px);
 }
 
+.internetanimal-iglink-page .iglink-poster-stage .iglink-button {
+  top: 84%;
+  width: min(240px, calc(100% - 32px));
+  min-height: 44px;
+  padding: 8px 16px;
+}
+
 .event-layout {
   display: grid;
   grid-template-columns: minmax(270px, .72fr) minmax(0, 1fr);
