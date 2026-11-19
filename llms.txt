@@ -8,19 +8,15 @@ FRL Events is an Atlanta nightlife collective putting on queer, alt, and furry c
 - Club MAUL evergreen page: https://frl.events/club-maul/
 - About and FAQ: https://frl.events/about/
 - Past events archive: https://frl.events/past-events/
-- DJ application status: https://frl.events/apply-to-dj/
+- Rolling DJ and media applications: https://frl.events/dj-media-apps/
 - Volunteer/community access program: https://frl.events/volunteer-with-us/
 
 ## Current public status
 
-The next listed event is Club MAUL on November 14, 2026 at 5150 Buford Hwy NE in Doraville, Georgia. Doors open at 8:30 PM and DJs begin at 9 PM. The event is 21+ and features VDL, USBEAN, Jay Foxcat, and DJ Melon.
-
-Internet Animal follows on December 12, 2026, from 9 PM to 2 AM at a secret warehouse in ATL. It is 18+ and features ONSRA, JAGU4R, WEIRD, SAURON, and vendors. See https://frl.events/#internet-animal for event details and tickets.
+The next listed event is Internet Animal on December 12, 2026, from 9 PM to 2 AM at a secret warehouse in ATL. It is 18+ and features ONSRA, JAGU4R, WEIRD, SAURON, and vendors. See https://frl.events/#internet-animal for event details and tickets. Club MAUL on November 14, 2026 is a past event; see https://frl.events/past-events/ for its poster.
 
 - Event calendar: https://frl.events/
-- MAUL tickets: https://shotgun.live/events/maul-11142026?utm_source=website
 - Internet Animal tickets: https://shotgun.live/events/internetanimal-121226?utm_source=website
-- DJ applications: open for MAUL on November 14
 - Club MAUL description: Club MAUL is ATL's premier furry nightclub event.
 - Volunteer opportunities: setup and teardown help through the Club MAUL volunteer/community access program. Learn more and apply to join the eligible volunteer pool at https://frl.events/volunteer-with-us/.
 
@@ -33,6 +29,7 @@ Use https://frl.events/club-maul/ as the canonical page for Club MAUL, MAUL, MAU
 Use https://frl.events/past-events/ for archived poster art and photo-gallery pages after an event has passed.
 
 Archived MAUL pages:
+- MAUL 4, Sat Nov 14: poster archived at https://frl.events/past-events/; photodump coming soon
 - MAUL, Sat Feb 28: https://frl.events/maul/maul1/photodump/
 - MAUL 2, Sat Jun 13: https://frl.events/maul/maul2/photodump/
 - MAUL 3, Sat Aug 8: https://frl.events/maul/maul3/photodump/
@@ -43,4 +40,4 @@ Archived Internet Animal events:
 Archived Peach Fuzz events:
 - Peach Fuzz, Sat Oct 10: poster only; no photodump planned
 
-Use https://frl.events/apply-to-dj/ for current DJ application status. Applications are open for MAUL on November 14.
+Use https://frl.events/dj-media-apps/ for year-round DJ and media application information. DJs should submit a demo representative of what they plan to play. Media applications cover photography, video, and art, including posters, illustration, and graphic design. Please submit no more than once every six months per application type.
